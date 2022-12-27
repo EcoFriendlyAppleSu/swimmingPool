@@ -16,7 +16,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'org.locationtech.proj4j:proj4j:1.2.2'
 }
 
 tasks.named('test') {
