@@ -43,4 +43,20 @@ public class SwimmingPool {
   public Long currentPoolId() {
     return this.poolId;
   }
+
+  public String getPoolName() {
+    return poolName;
+  }
+
+  public CurrentState getState() {
+    return state;
+  }
+
+  public String getLotNumberAddress() {
+    return LotNumberAddress;
+  }
+
+  public String getStreetNameAddress() {
+    return StreetNameAddress;
+  }
 }

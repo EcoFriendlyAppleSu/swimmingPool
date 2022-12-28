@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import swimming.pool.application.command.RegisterSwimmingPoolCommand;
+import swimming.pool.application.result.RegisterResult;
+import swimming.pool.domain.SwimmingPool;
 import swimming.pool.domain.SwimmingPoolRepository;
 
 @Service
@@ -16,7 +18,13 @@ public class RegisterSwimmingPoolService {
     this.repository = repository;
   }
 
-  public void register(RegisterSwimmingPoolCommand registerCommand) {
-    repository.save(registerCommand.toEntity());
+  public RegisterResult register(RegisterSwimmingPoolCommand registerCommand) {
+    SwimmingPool swimmingPool = repository.save(registerCommand.toEntity());
+    return new RegisterResult(
+        swimmingPool.getPoolName(),
+        swimmingPool.getState(),
+        swimmingPool.getLotNumberAddress(),
+        swimmingPool.getStreetNameAddress()
+    );
   }
 }
