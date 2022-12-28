@@ -17,6 +17,6 @@ public class RegisterSwimmingPoolService {
   }
 
   public void register(RegisterSwimmingPoolCommand registerCommand) {
-    logger.info("RegisterSwimmingPoolService works");
+    repository.save(registerCommand.toEntity());
   }
 }

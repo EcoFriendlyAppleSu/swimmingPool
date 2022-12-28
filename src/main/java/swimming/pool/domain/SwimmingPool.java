@@ -24,9 +24,23 @@ public class SwimmingPool {
   }
 
   /*
+  * mocking Constructor
+  * */
+  public static SwimmingPool mock() {
+    return new SwimmingPool();
+  }
+
+  /*
   * Auto Increment를 위한 식별자 값 Setter
   * */
   public void setIdentifier(Long poolId) {
     this.poolId = poolId;
+  }
+
+  /*
+  * create 동작 시 검증할 때 사용할 method
+  * */
+  public Long currentPoolId() {
+    return this.poolId;
   }
 }
