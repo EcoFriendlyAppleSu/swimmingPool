@@ -1,5 +1,8 @@
 package swimming.pool.presentation.request;
 
+import swimming.pool.application.RegisterSwimmingPoolService;
+import swimming.pool.application.command.RegisterSwimmingPoolCommand;
+
 public class SwimmingPoolInfoRequest {
 
   private String lastmodts;
@@ -36,4 +39,14 @@ public class SwimmingPoolInfoRequest {
   private String ropnymd;
   private String mgtno;
   private String x;
+
+  public RegisterSwimmingPoolCommand toCommand() {
+    return new RegisterSwimmingPoolCommand(
+        this.bplcnm,
+        this.dtlstatenm,
+        this.sitewhladdr,
+        this.rdnwhladdr
+    );
+  }
+
 }
