@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import swimming.pool.application.RegisterSwimmingPoolService;
 import swimming.pool.application.result.RegisterResult;
@@ -27,7 +26,6 @@ public class RegisterSwimmingPoolInformationController {
   @PostMapping("/register/single")
   public String singleInformation(@RequestBody SwimmingPoolInfoRequest request) {
     RegisterResult registerResult = service.register(request.toCommand());
-    logger.info(registerResult.toString());
     return "response 200 OK";
   }
 

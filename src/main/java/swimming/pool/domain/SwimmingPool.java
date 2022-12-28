@@ -15,11 +15,26 @@ public class SwimmingPool {
 
   private SwimmingPool(String poolName, String state, String lotNumberAddress,
       String streetNameAddress) {
-    // TODO: 2022/12/28 각 entity에 데이터 전달 필요
+    this.poolName = poolName;
+    this.lotNumberAddress = LotAddress.from(lotNumberAddress);
+    this.streetNameAddress = StreetAddress.from(streetNameAddress);
+    this.state = changeState(state);
   }
+
   public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
       String streetNameAddress) {
+
     return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress);
+  }
+
+  private CurrentState changeState(String state) {
+    if (CurrentState.OPEN.stateMessage().equals(state)) {
+      return CurrentState.OPEN;
+    }
+    if (CurrentState.CLOSE.stateMessage().equals(state)) {
+      return CurrentState.CLOSE;
+    }
+    return CurrentState.ETC;
   }
 
   /*
@@ -47,8 +62,8 @@ public class SwimmingPool {
     return poolName;
   }
 
-  public CurrentState getState() {
-    return state;
+  public String getState() {
+    return state.stateMessage();
   }
 
   public String getLotNumberAddress() {

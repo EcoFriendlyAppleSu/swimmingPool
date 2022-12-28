@@ -2,6 +2,7 @@ package swimming.pool.application;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import swimming.pool.application.command.RegisterSwimmingPoolCommand;
 import swimming.pool.application.result.RegisterResult;
@@ -14,6 +15,7 @@ public class RegisterSwimmingPoolService {
   Logger logger = LoggerFactory.getLogger(this.getClass());
   private final SwimmingPoolRepository repository;
 
+  @Autowired
   public RegisterSwimmingPoolService(SwimmingPoolRepository repository) {
     this.repository = repository;
   }
