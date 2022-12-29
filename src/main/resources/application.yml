@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/swimmingPool
+    username: lee
+    password:
+
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:h2/schema.sql
+
+# datasource initialization-mode는 deprecated 되었습니다.
