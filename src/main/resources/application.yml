@@ -12,3 +12,6 @@ spring:
       schema-locations: classpath:h2/schema.sql
 
 # datasource initialization-mode는 deprecated 되었습니다.
+
+mybatis:
+  mapper-locations: mybatis/mapper/**/*.xml
