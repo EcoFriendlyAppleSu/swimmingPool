@@ -12,10 +12,8 @@ import swimming.pool.domain.SwimmingPoolRepository;
 @Service
 public class RegisterSwimmingPoolService {
 
-  Logger logger = LoggerFactory.getLogger(this.getClass());
   private final SwimmingPoolRepository repository;
 
-  @Autowired
   public RegisterSwimmingPoolService(SwimmingPoolRepository repository) {
     this.repository = repository;
   }

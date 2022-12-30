@@ -10,7 +10,7 @@ import swimming.pool.domain.SwimmingPool;
 import swimming.pool.domain.SwimmingPoolRepository;
 import swimming.pool.infra.exception.DuplicatedPoolInformationException;
 
-@Repository
+//@Repository
 public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepository {
 
   private final Map<Long, SwimmingPool> map = new HashMap<>();
