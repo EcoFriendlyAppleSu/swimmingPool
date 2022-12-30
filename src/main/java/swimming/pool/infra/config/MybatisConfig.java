@@ -4,7 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan(basePackages = "swimming/pool/infra/mybatis")
+@MapperScan(basePackages = "swimming.pool.infra.mybatis")
 public class MybatisConfig {
 
 }

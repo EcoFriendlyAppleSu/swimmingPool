@@ -18,6 +18,8 @@ public class SwimmingPool {
     this.poolName = poolName;
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
+//    this.lotNumberAddress = lotNumberAddress;
+//    this.streetNameAddress = streetNameAddress;
     this.state = changeState(state);
   }
 
@@ -68,9 +70,11 @@ public class SwimmingPool {
 
   public String getLotNumberAddress() {
     return lotNumberAddress.currentLotAddress();
+//    return this.lotNumberAddress;
   }
 
   public String getStreetNameAddress() {
     return streetNameAddress.currentStreetAddress();
+//    return this.streetNameAddress;
   }
 }

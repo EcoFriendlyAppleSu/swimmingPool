@@ -14,4 +14,4 @@ spring:
 # datasource initialization-mode는 deprecated 되었습니다.
 
 mybatis:
-  mapper-locations: mybatis/mapper/**/*.xml
+  mapper-locations: classpath:mybatis/**/*.xml
