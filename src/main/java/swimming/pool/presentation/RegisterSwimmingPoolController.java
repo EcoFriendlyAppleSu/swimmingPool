@@ -13,13 +13,13 @@ import swimming.pool.presentation.request.SwimmingPoolInfoRequest;
 
 @RestController
 @RequestMapping("/swimmingpool")
-public class RegisterSwimmingPoolInformationController {
+public class RegisterSwimmingPoolController {
 
   Logger logger = LoggerFactory.getLogger(this.getClass());
 
   private final RegisterSwimmingPoolService service;
   @Autowired
-  public RegisterSwimmingPoolInformationController(RegisterSwimmingPoolService service) {
+  public RegisterSwimmingPoolController(RegisterSwimmingPoolService service) {
     this.service = service;
   }
 
