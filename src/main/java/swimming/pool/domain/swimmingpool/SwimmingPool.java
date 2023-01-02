@@ -1,4 +1,4 @@
-package swimming.pool.domain;
+package swimming.pool.domain.swimmingpool;
 
 import swimming.pool.domain.enums.CurrentState;
 

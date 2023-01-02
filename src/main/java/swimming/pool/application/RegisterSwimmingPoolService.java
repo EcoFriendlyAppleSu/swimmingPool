@@ -3,8 +3,8 @@ package swimming.pool.application;
 import org.springframework.stereotype.Service;
 import swimming.pool.application.command.RegisterSwimmingPoolCommand;
 import swimming.pool.application.result.SwimmingPoolResult;
-import swimming.pool.domain.SwimmingPool;
-import swimming.pool.domain.SwimmingPoolRepository;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 
 @Service
 public class RegisterSwimmingPoolService {

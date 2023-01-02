@@ -3,12 +3,11 @@ package swimming.pool.infra.Impl;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import swimming.pool.domain.SwimmingPool;
-import swimming.pool.domain.SwimmingPoolRepository;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.exception.DuplicatedPoolInformationException;
+import swimming.pool.infra.exception.SwimmingPoolNameNotExistException;
 
 @Repository
 public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepository {
@@ -38,6 +37,6 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
         return pool;
       }
     }
-    return null;
+    throw new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다.");
   }
 }

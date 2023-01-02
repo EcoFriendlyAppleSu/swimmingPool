@@ -4,19 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="swimming.pool.infra.mybatis.SwimmingPoolMapper">
-  <resultMap id="swimmingPoolBase" type="swimming.pool.domain.SwimmingPool">
+  <resultMap id="swimmingPoolBase" type="swimming.pool.domain.swimmingpool.SwimmingPool">
     <id column="POOL_ID" property="poolId"/>
     <result column="POOL_NAME" property="poolName"/>
     <result column="STATE" property="state"/>
-      <association property="lotNumberAddress" javaType="swimming.pool.domain.LotAddress">
+      <association property="lotNumberAddress" javaType="swimming.pool.domain.swimmingpool.LotAddress">
         <result property="address" column="LOT_ADDRESS"/>
       </association>
-      <association property="streetNameAddress" javaType="swimming.pool.domain.StreetAddress">
+      <association property="streetNameAddress" javaType="swimming.pool.domain.swimmingpool.StreetAddress">
         <result property="address" column="STREET_ADDRESS"/>
       </association>
   </resultMap>
 
-  <insert id="insert" parameterType="swimming.pool.domain.SwimmingPool" useGeneratedKeys="true" keyProperty="poolId">
+  <insert id="insert" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool" useGeneratedKeys="true" keyProperty="poolId">
     INSERT
     INTO SWIMMING_POOL(POOL_NAME, STATE, LOT_ADDRESS, STREET_ADDRESS)
     VALUES (#{poolName}, #{state}, #{lotNumberAddress}, #{streetNameAddress})

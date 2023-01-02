@@ -1,7 +1,7 @@
 package swimming.pool.infra.mybatis;
 
 import org.apache.ibatis.annotations.Mapper;
-import swimming.pool.domain.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
 
 
 @Mapper

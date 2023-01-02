@@ -3,7 +3,7 @@ package swimming.pool.infra.Impl;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-import swimming.pool.domain.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
 
 class SwimmingPoolRepositoryInMemoryImplTest {
 

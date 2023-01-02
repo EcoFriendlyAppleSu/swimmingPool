@@ -1,6 +1,6 @@
 package swimming.pool.application.command;
 
-import swimming.pool.domain.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
 
 public class RegisterSwimmingPoolCommand {
 

@@ -1,8 +1,7 @@
 package swimming.pool.infra.repository;
 
-import org.springframework.stereotype.Repository;
-import swimming.pool.domain.SwimmingPool;
-import swimming.pool.domain.SwimmingPoolRepository;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 
 //@Repository
