@@ -6,8 +6,10 @@
 <mapper namespace="swimming.pool.infra.mybatis.SwimmingPoolMapper">
   <resultMap id="swimmingPoolBase" type="swimming.pool.domain.swimmingpool.SwimmingPool">
     <id column="POOL_ID" property="poolId"/>
-    <result column="POOL_NAME" property="poolName"/>
     <result column="STATE" property="state"/>
+    <association property="poolName" javaType="swimming.pool.domain.swimmingpool.PoolName">
+        <result property="poolName" column="POOL_NAME"/>
+      </association>
       <association property="lotNumberAddress" javaType="swimming.pool.domain.swimmingpool.LotAddress">
         <result property="address" column="LOT_ADDRESS"/>
       </association>

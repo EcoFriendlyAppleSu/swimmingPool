@@ -1,6 +1,8 @@
 package swimming.pool.infra.Impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Repository;
@@ -38,5 +40,16 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
       }
     }
     throw new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다.");
+  }
+
+  @Override
+  public void updateByName(SwimmingPool swimmingPool) {
+    SwimmingPool pool = map.get(swimmingPool.currentPoolId());
+    pool.changePoolName(swimmingPool.getPoolName());
+  }
+
+  @Override
+  public List<SwimmingPool> findAll() {
+    return new ArrayList<>(map.values());
   }
 }

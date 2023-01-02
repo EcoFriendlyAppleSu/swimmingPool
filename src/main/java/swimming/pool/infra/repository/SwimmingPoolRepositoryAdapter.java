@@ -1,5 +1,6 @@
 package swimming.pool.infra.repository;
 
+import java.util.List;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
@@ -24,6 +25,15 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   @Override
   public SwimmingPool findByName(String poolName) {
+    return null;
+  }
+
+  @Override
+  public void updateByName(SwimmingPool swimmingPool) {
+  }
+
+  @Override
+  public List<SwimmingPool> findAll() {
     return null;
   }
 }

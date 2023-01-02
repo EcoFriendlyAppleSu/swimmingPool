@@ -5,7 +5,7 @@ import swimming.pool.domain.enums.CurrentState;
 public class SwimmingPool {
 
   private Long poolId; // auto increment 식별자 값이 필요합니다.
-  private String poolName; // 수영장 업체 이름
+  private PoolName poolName; // 수영장 업체 이름
   private CurrentState state; // 폐업, 영업 관리
   private LotAddress lotNumberAddress; // 지번 주소
   private StreetAddress streetNameAddress; // 도로명 주소
@@ -15,11 +15,9 @@ public class SwimmingPool {
 
   private SwimmingPool(String poolName, String state, String lotNumberAddress,
       String streetNameAddress) {
-    this.poolName = poolName;
+    this.poolName = PoolName.from(poolName);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
-//    this.lotNumberAddress = lotNumberAddress;
-//    this.streetNameAddress = streetNameAddress;
     this.state = changeState(state);
   }
 
@@ -37,6 +35,18 @@ public class SwimmingPool {
       return CurrentState.CLOSE;
     }
     return CurrentState.ETC;
+  }
+
+
+  public boolean canChangePoolName(String poolName) {
+    if (!this.poolName.canPoolName(poolName)) {
+      return false;
+    }
+    return true;
+  }
+
+  public void changePoolName(String poolName) {
+    this.poolName.changeName(poolName);
   }
 
   /*
@@ -61,7 +71,7 @@ public class SwimmingPool {
   }
 
   public String getPoolName() {
-    return poolName;
+    return this.poolName.currentPoolName();
   }
 
   public String getState() {
