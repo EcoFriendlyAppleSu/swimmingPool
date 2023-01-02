@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.7'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "io.freefair.lombok" version "6.6"
 }
 
 group = 'swimming'
@@ -11,10 +12,13 @@ sourceCompatibility = '11'
 repositories {
 	mavenCentral()
 }
-
+// mybatis-spring-boot를 사용하면 sqlSession을 별다른 설정 없이 사용 가능하다.
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+
 	runtimeOnly 'com.h2database:h2'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
