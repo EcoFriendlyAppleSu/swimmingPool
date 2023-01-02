@@ -5,7 +5,7 @@ import swimming.pool.domain.SwimmingPool;
 import swimming.pool.domain.SwimmingPoolRepository;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 
-@Repository
+//@Repository
 public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   private final SwimmingPoolMapper swimmingPoolMapper;
@@ -20,6 +20,11 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
       swimmingPoolMapper.insert(swimmingPool);
       return swimmingPool;
     }
+    return null;
+  }
+
+  @Override
+  public SwimmingPool findByName(String poolName) {
     return null;
   }
 }

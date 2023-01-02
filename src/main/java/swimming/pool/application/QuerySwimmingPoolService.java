@@ -1,22 +1,21 @@
 package swimming.pool.application;
 
 import org.springframework.stereotype.Service;
-import swimming.pool.application.command.RegisterSwimmingPoolCommand;
 import swimming.pool.application.result.SwimmingPoolResult;
 import swimming.pool.domain.SwimmingPool;
 import swimming.pool.domain.SwimmingPoolRepository;
 
 @Service
-public class RegisterSwimmingPoolService {
+public class QuerySwimmingPoolService {
 
   private final SwimmingPoolRepository repository;
 
-  public RegisterSwimmingPoolService(SwimmingPoolRepository repository) {
+  public QuerySwimmingPoolService(SwimmingPoolRepository repository) {
     this.repository = repository;
   }
 
-  public SwimmingPoolResult register(RegisterSwimmingPoolCommand registerCommand) {
-    SwimmingPool swimmingPool = repository.save(registerCommand.toEntity());
+  public SwimmingPoolResult findSwimmingPool(String poolName) {
+    SwimmingPool swimmingPool = repository.findByName(poolName);
     return new SwimmingPoolResult(
         swimmingPool.getPoolName(),
         swimmingPool.getState(),

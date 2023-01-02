@@ -10,7 +10,7 @@ import swimming.pool.domain.SwimmingPool;
 import swimming.pool.domain.SwimmingPoolRepository;
 import swimming.pool.infra.exception.DuplicatedPoolInformationException;
 
-//@Repository
+@Repository
 public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepository {
 
   private final Map<Long, SwimmingPool> map = new HashMap<>();
@@ -29,5 +29,15 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     map.put(poolId, swimmingPool);
 
     return swimmingPool;
+  }
+
+  @Override
+  public SwimmingPool findByName(String poolName) {
+    for (SwimmingPool pool : map.values()) {
+      if (pool.getPoolName().equals(poolName)) {
+        return pool;
+      }
+    }
+    return null;
   }
 }

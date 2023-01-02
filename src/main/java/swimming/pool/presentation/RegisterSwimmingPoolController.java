@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import swimming.pool.application.RegisterSwimmingPoolService;
-import swimming.pool.application.result.RegisterResult;
+import swimming.pool.application.result.SwimmingPoolResult;
+import swimming.pool.infra.common.ApiResponse;
 import swimming.pool.presentation.request.SwimmingPoolInfoRequest;
 
 @RestController
@@ -24,9 +25,8 @@ public class RegisterSwimmingPoolController {
   }
 
   @PostMapping("/register/single")
-  public String singleInformation(@RequestBody SwimmingPoolInfoRequest request) {
-    RegisterResult registerResult = service.register(request.toCommand());
-    return "response 200 OK";
+  public ApiResponse<SwimmingPoolResult> singleInformation(@RequestBody SwimmingPoolInfoRequest request) {
+    SwimmingPoolResult swimmingPoolResult = service.register(request.toCommand());
+    return ApiResponse.success(swimmingPoolResult);
   }
-
 }
