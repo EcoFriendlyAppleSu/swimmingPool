@@ -14,10 +14,10 @@ public class UpdateSwimmingPoolService {
     this.repository = repository;
   }
 
-  public SwimmingUpdateResult updatePoolName(String poolName) {
+  public SwimmingUpdateResult updatePoolName(String poolName, String givenName) {
     SwimmingPool swimmingPool = repository.findByName(poolName);
-    if (swimmingPool.canChangePoolName(poolName)) {
-      repository.updateByName(swimmingPool);
+    if (swimmingPool.canChangePoolName(givenName)) {
+      repository.updateByName(swimmingPool.currentPoolId(), givenName);
       return new SwimmingUpdateResult(swimmingPool.getPoolName());
     }
     return null;

@@ -29,7 +29,7 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   }
 
   @Override
-  public void updateByName(SwimmingPool swimmingPool) {
+  public void updateByName(Long Id, String givenPoolName) {
   }
 
   @Override
