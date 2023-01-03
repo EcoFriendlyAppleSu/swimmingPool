@@ -1,12 +1,12 @@
 package swimming.pool.domain.swimmingpool;
 
-import swimming.pool.domain.enums.CurrentState;
+import swimming.pool.infra.common.enums.PoolState;
 
 public class SwimmingPool {
 
   private Long poolId; // auto increment 식별자 값이 필요합니다.
   private PoolName poolName; // 수영장 업체 이름
-  private CurrentState state; // 폐업, 영업 관리
+  private PoolState state; // 폐업, 영업 관리
   private LotAddress lotNumberAddress; // 지번 주소
   private StreetAddress streetNameAddress; // 도로명 주소
 
@@ -27,14 +27,14 @@ public class SwimmingPool {
     return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress);
   }
 
-  private CurrentState changeState(String state) {
-    if (CurrentState.OPEN.stateMessage().equals(state)) {
-      return CurrentState.OPEN;
+  private PoolState changeState(String state) {
+    if (PoolState.OPEN.stateMessage().equals(state)) {
+      return PoolState.OPEN;
     }
-    if (CurrentState.CLOSE.stateMessage().equals(state)) {
-      return CurrentState.CLOSE;
+    if (PoolState.CLOSE.stateMessage().equals(state)) {
+      return PoolState.CLOSE;
     }
-    return CurrentState.ETC;
+    return PoolState.ETC;
   }
 
 
