@@ -11,4 +11,6 @@ public interface SwimmingPoolRepository {
   void updateByName(Long poolId, String givenPoolName);
 
   List<SwimmingPool> findAll();
+
+  void deletePool(String poolName);
 }

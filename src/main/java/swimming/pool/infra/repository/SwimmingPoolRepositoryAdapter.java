@@ -36,4 +36,8 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   public List<SwimmingPool> findAll() {
     return null;
   }
+
+  @Override
+  public void deletePool(String poolName) {
+  }
 }

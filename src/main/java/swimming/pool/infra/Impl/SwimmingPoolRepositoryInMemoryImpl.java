@@ -49,6 +49,14 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
   }
 
   @Override
+  public void deletePool(String poolName) {
+    SwimmingPool foundPool = findAll().stream().filter(pool -> pool.getPoolName().equals(poolName))
+        .findFirst()
+        .orElseThrow(() -> new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다."));
+    map.remove(foundPool.currentPoolId());
+  }
+
+  @Override
   public List<SwimmingPool> findAll() {
     return new ArrayList<>(map.values());
   }
