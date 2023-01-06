@@ -14,5 +14,4 @@ public interface SwimmingPoolRepository {
 
   void deletePool(String poolName);
 
-  List<SwimmingPool> saveAll(List<SwimmingPool> pools);
 }
