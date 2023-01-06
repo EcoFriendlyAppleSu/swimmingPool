@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import swimming.pool.application.RegisterSwimmingPoolService;
 import swimming.pool.application.result.SwimmingPoolResult;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.infra.common.ApiResponse;
 import swimming.pool.presentation.request.SwimmingPoolInfoRequest;
 import swimming.pool.presentation.request.SwimmingPoolInfoWrapper;
@@ -33,8 +34,8 @@ public class RegisterSwimmingPoolController {
   }
 
   @PostMapping("/multi")
-  public String multiInformation(@RequestBody SwimmingPoolInfoWrapper requests) {
-    service.registerMultiData(requests.toCommands());
-    return "works well";
+  public ApiResponse<List<SwimmingPool>> multiInformation(@RequestBody SwimmingPoolInfoWrapper requests) {
+    List<SwimmingPoolResult> swimmingPoolResults = service.registerMultiData(requests.toCommands());
+    return ApiResponse.success(swimmingPoolResults);
   }
 }

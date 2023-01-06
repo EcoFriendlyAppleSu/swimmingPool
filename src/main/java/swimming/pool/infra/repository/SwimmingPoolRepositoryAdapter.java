@@ -40,4 +40,9 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public void deletePool(String poolName) {
   }
+
+  @Override
+  public List<SwimmingPool> saveAll(List<SwimmingPool> pools) {
+    return null;
+  }
 }

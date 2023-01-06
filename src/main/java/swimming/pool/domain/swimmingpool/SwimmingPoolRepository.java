@@ -13,4 +13,6 @@ public interface SwimmingPoolRepository {
   List<SwimmingPool> findAll();
 
   void deletePool(String poolName);
+
+  List<SwimmingPool> saveAll(List<SwimmingPool> pools);
 }

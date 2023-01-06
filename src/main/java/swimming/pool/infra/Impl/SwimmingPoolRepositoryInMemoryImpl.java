@@ -60,4 +60,9 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
   public List<SwimmingPool> findAll() {
     return new ArrayList<>(map.values());
   }
+
+  @Override
+  public List<SwimmingPool> saveAll(List<SwimmingPool> pools) {
+    return null;
+  }
 }
