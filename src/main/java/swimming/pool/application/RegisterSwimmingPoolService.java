@@ -1,5 +1,6 @@
 package swimming.pool.application;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import swimming.pool.application.command.RegisterSwimmingPoolCommand;
 import swimming.pool.application.result.SwimmingPoolResult;
@@ -23,5 +24,9 @@ public class RegisterSwimmingPoolService {
         swimmingPool.getLotNumberAddress(),
         swimmingPool.getStreetNameAddress()
     );
+  }
+
+  public void registerMultiData(List<RegisterSwimmingPoolCommand> poolCommands) {
+
   }
 }

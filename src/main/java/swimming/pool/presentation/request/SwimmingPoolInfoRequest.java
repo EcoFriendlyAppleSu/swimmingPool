@@ -65,4 +65,14 @@ public class SwimmingPoolInfoRequest {
   public String getRdnwhladdr() {
     return rdnwhladdr;
   }
+
+  @Override
+  public String toString() {
+    return "SwimmingPoolInfoRequest [" +
+        "수영장 상태 = '" + dtlstatenm + '\'' +
+        ", 수영장 이름 = '" + bplcnm + '\'' +
+        ", 지번 주소 = '" + sitewhladdr + '\'' +
+        ", 도로명 주소 = '" + rdnwhladdr + '\'' +
+        ']';
+  }
 }
