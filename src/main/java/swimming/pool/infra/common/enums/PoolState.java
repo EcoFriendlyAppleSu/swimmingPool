@@ -8,7 +8,7 @@ public enum PoolState {
     this.message = message;
   }
 
-  public String stateMessage() {
+  public String getMessage() {
     return this.message;
   }
 }

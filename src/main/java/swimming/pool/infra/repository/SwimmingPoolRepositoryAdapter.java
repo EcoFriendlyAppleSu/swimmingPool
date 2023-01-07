@@ -1,11 +1,12 @@
 package swimming.pool.infra.repository;
 
 import java.util.List;
+import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 
-//@Repository
+@Repository
 public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   private final SwimmingPoolMapper swimmingPoolMapper;
@@ -25,7 +26,7 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   @Override
   public SwimmingPool findByName(String poolName) {
-    return null;
+    return swimmingPoolMapper.findByName(poolName);
   }
 
   @Override

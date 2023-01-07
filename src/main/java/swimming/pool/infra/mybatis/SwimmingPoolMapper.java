@@ -8,4 +8,6 @@ import swimming.pool.domain.swimmingpool.SwimmingPool;
 public interface SwimmingPoolMapper {
 
   void insert(SwimmingPool swimmingPool);
+
+  SwimmingPool findByName(String poolName);
 }

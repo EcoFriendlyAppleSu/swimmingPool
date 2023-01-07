@@ -11,7 +11,7 @@ import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.exception.DuplicatedPoolInformationException;
 import swimming.pool.infra.exception.SwimmingPoolNameNotExistException;
 
-@Repository
+//@Repository
 public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepository {
 
   private final Map<Long, SwimmingPool> map = new HashMap<>();

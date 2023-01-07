@@ -18,7 +18,7 @@ public class SwimmingPool {
     this.poolName = PoolName.from(poolName);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
-    this.state = changeState(state);
+    this.state = formState(state);
   }
 
   public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
@@ -27,11 +27,11 @@ public class SwimmingPool {
     return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress);
   }
 
-  private PoolState changeState(String state) {
-    if (PoolState.OPEN.stateMessage().equals(state)) {
+  private PoolState formState(String state) {
+    if (PoolState.OPEN.getMessage().equals(state)) {
       return PoolState.OPEN;
     }
-    if (PoolState.CLOSE.stateMessage().equals(state)) {
+    if (PoolState.CLOSE.getMessage().equals(state)) {
       return PoolState.CLOSE;
     }
     return PoolState.ETC;
@@ -75,7 +75,7 @@ public class SwimmingPool {
   }
 
   public String getState() {
-    return state.stateMessage();
+    return state.getMessage();
   }
 
   public String getLotNumberAddress() {
