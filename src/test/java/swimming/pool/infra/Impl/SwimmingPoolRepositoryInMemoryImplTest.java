@@ -14,8 +14,17 @@ class SwimmingPoolRepositoryInMemoryImplTest {
     var pool = SwimmingPool.mock();
     var repository = new SwimmingPoolRepositoryInMemoryImpl();
     var savePool = repository.save(pool);
-    assertThat(savePool.currentPoolId()).isEqualTo(1L);
+    assertThat(savePool.getPoolId()).isEqualTo(1L);
 
+  }
+
+  @Test
+  public void swimmingPoolEnumTypeCheckTest() throws Exception {
+    // given
+    SwimmingPool register = SwimmingPool.register("lee", "영업중", "서울", "영등포");
+
+    // then
+    System.out.println(register.toString());
   }
 
 }

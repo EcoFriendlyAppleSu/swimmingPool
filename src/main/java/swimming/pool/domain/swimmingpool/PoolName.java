@@ -12,6 +12,9 @@ public class PoolName {
     }
   }
 
+  protected PoolName() {
+  }
+
   public static PoolName from(String poolName) {
     return new PoolName(poolName);
   }
@@ -23,7 +26,7 @@ public class PoolName {
     return true;
   }
 
-  public String currentPoolName() {
+  public String getPoolName() {
     return poolName;
   }
 

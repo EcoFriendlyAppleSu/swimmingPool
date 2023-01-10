@@ -15,7 +15,7 @@ public class StreetAddress {
     return new StreetAddress(address);
   }
 
-  public String currentStreetAddress() {
+  public String getAddress() {
     return address;
   }
 }

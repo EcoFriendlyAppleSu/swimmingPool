@@ -1,7 +1,9 @@
 package swimming.pool.infra.mybatis;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
+import swimming.pool.domain.swimmingpool.dao.SwimmingPoolDAO;
 
 
 @Mapper
@@ -9,5 +11,5 @@ public interface SwimmingPoolMapper {
 
   void insert(SwimmingPool swimmingPool);
 
-  SwimmingPool findByName(String poolName);
+  SwimmingPoolDAO findByName(@Param("poolName") String poolName);
 }

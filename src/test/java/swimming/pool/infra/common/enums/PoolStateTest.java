@@ -20,4 +20,13 @@ class PoolStateTest {
     // 저장 시 getMessage가 들어가고 name은 들어가지 않는다.
   }
 
+  @Test
+  public void poolStateTest() throws Exception {
+    // given
+
+    // when
+
+    // then
+    System.out.println(PoolState.OPEN.getMessage());
+  }
 }

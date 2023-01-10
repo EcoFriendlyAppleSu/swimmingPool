@@ -15,8 +15,7 @@ public class LotAddress {
     return new LotAddress(address);
   }
 
-  public String currentLotAddress() {
+  public String getAddress() {
     return this.address;
   }
-
 }

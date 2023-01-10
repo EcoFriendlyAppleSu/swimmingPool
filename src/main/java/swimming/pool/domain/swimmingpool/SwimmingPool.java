@@ -10,7 +10,7 @@ public class SwimmingPool {
   private LotAddress lotNumberAddress; // 지번 주소
   private StreetAddress streetNameAddress; // 도로명 주소
 
-  protected SwimmingPool() {
+  public SwimmingPool() {
   }
 
   private SwimmingPool(String poolName, String state, String lotNumberAddress,
@@ -18,7 +18,8 @@ public class SwimmingPool {
     this.poolName = PoolName.from(poolName);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
-    this.state = formState(state);
+    this.state = messageForState(state);
+    this.state = messageForState(state);
   }
 
   public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
@@ -27,7 +28,16 @@ public class SwimmingPool {
     return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress);
   }
 
-  private PoolState formState(String state) {
+  public SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
+      String streetNameAddress) {
+    this.poolId = poolId;
+    this.poolName = PoolName.from(poolName);
+    this.state = nameForState(state);
+    this.lotNumberAddress = LotAddress.from(lotNumberAddress);
+    this.streetNameAddress = StreetAddress.from(streetNameAddress);
+  }
+
+  private PoolState messageForState(String state) {
     if (PoolState.OPEN.getMessage().equals(state)) {
       return PoolState.OPEN;
     }
@@ -36,6 +46,17 @@ public class SwimmingPool {
     }
     return PoolState.ETC;
   }
+
+  private PoolState nameForState(String state) {
+    if (PoolState.OPEN.name().equals(state)) {
+      return PoolState.OPEN;
+    }
+    if (PoolState.CLOSE.name().equals(state)) {
+      return PoolState.CLOSE;
+    }
+    return PoolState.ETC;
+  }
+
 
 
   public boolean canChangePoolName(String poolName) {
@@ -66,25 +87,35 @@ public class SwimmingPool {
   /*
   * create 동작 시 검증할 때 사용할 method
   * */
-  public Long currentPoolId() {
+  public Long getPoolId() {
     return this.poolId;
   }
 
+
   public String getPoolName() {
-    return this.poolName.currentPoolName();
+    return poolName.getPoolName();
   }
 
-  public String getState() {
-    return state.getMessage();
+  public PoolState getState() {
+    return state;
   }
 
-  public String getLotNumberAddress() {
-    return lotNumberAddress.currentLotAddress();
-//    return this.lotNumberAddress;
+  public String  getLotNumberAddress() {
+    return lotNumberAddress.getAddress();
   }
 
   public String getStreetNameAddress() {
-    return streetNameAddress.currentStreetAddress();
-//    return this.streetNameAddress;
+    return streetNameAddress.getAddress();
+  }
+
+  @Override
+  public String toString() {
+    return "SwimmingPool{" +
+        "poolId=" + poolId +
+        ", poolName=" + poolName.getPoolName() +
+        ", state=" + getState() +
+        ", lotNumberAddress=" + lotNumberAddress.getAddress() +
+        ", streetNameAddress=" + streetNameAddress.getAddress() +
+        '}';
   }
 }

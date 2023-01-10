@@ -1,5 +1,7 @@
 package swimming.pool.application.result;
 
+import swimming.pool.infra.common.enums.PoolState;
+
 public class SwimmingPoolResult {
 
   private String poolName; // 수영장 업체 이름
@@ -11,10 +13,10 @@ public class SwimmingPoolResult {
 
   }
 
-  public SwimmingPoolResult(String poolName, String state, String lotNumberAddress,
+  public SwimmingPoolResult(String poolName, PoolState state, String lotNumberAddress,
       String streetNameAddress) {
     this.poolName = poolName;
-    this.state = state;
+    this.state = state.getMessage();
     this.LotNumberAddress = lotNumberAddress;
     this.StreetNameAddress = streetNameAddress;
   }

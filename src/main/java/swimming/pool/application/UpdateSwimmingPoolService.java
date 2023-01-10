@@ -17,7 +17,7 @@ public class UpdateSwimmingPoolService {
   public SwimmingUpdateResult updatePoolName(String poolName, String givenName) {
     SwimmingPool swimmingPool = repository.findByName(poolName);
     if (swimmingPool.canChangePoolName(givenName)) {
-      repository.updateByName(swimmingPool.currentPoolId(), givenName);
+      repository.updateByName(swimmingPool.getPoolId(), givenName);
       return new SwimmingUpdateResult(swimmingPool.getPoolName());
     }
     return null;

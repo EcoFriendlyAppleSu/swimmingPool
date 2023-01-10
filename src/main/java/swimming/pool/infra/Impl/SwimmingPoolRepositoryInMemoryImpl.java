@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.exception.DuplicatedPoolInformationException;
@@ -22,7 +21,7 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     /*
     * swimmingPool.currentPoolId() == null, 값이 존재하지 않는 신규 데이터를 의미한다.
     * */
-    if (swimmingPool.currentPoolId() != null) {
+    if (swimmingPool.getPoolId() != null) {
       throw new DuplicatedPoolInformationException("이미 존재하는 수영장입니다.");
     }
     Long poolId = id.incrementAndGet();
@@ -53,7 +52,7 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     SwimmingPool foundPool = findAll().stream().filter(pool -> pool.getPoolName().equals(poolName))
         .findFirst()
         .orElseThrow(() -> new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다."));
-    map.remove(foundPool.currentPoolId());
+    map.remove(foundPool.getPoolId());
   }
 
   @Override

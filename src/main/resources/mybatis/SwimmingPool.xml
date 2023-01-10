@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="swimming.pool.infra.mybatis.SwimmingPoolMapper">
+
+  <resultMap id="swimmingPoolBase" type="swimming.pool.domain.swimmingpool.SwimmingPool">
+    <result column="poolId" property="poolId"/>
+    <result column="poolState" property="state"/>
+    <association property="poolName" resultMap="poolNameResultMap"/>
+    <association property="lotNumberAddress" resultMap="lotNumberAddressResultMap"/>
+    <association property="streetNameAddress" resultMap="streetNameAddressResultMap"/>
+  </resultMap>
+
+  <resultMap id="poolNameResultMap" type="swimming.pool.domain.swimmingpool.PoolName">
+    <result column="poolName" property="poolName"/>
+  </resultMap>
+
+  <resultMap id="lotNumberAddressResultMap" type="swimming.pool.domain.swimmingpool.LotAddress">
+    <result column="lotAddress" property="address"/>
+  </resultMap>
+
+  <resultMap id="streetNameAddressResultMap" type="swimming.pool.domain.swimmingpool.StreetAddress">
+    <result column="streetAddress" property="address"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool"
+    useGeneratedKeys="true" keyProperty="poolId">
+    INSERT
+    INTO swimming_pool(poolName, poolState, lotAddress, streetAddress)
+    VALUES (#{poolName}, #{state}, #{lotNumberAddress}, #{streetNameAddress})
+  </insert>
+
+  <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.domain.swimmingpool.dao.SwimmingPoolDAO">
+    SELECT poolId, poolState, poolName, lotAddress, streetAddress
+    FROM swimming_pool
+    WHERE poolName = #{poolName}
+  </select>
+
+</mapper>
+

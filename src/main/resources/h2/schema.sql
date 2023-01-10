@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS swimming_pool;
 CREATE TABLE swimming_pool
 (
-    pool_id        BIGINT      NOT NULL AUTO_INCREMENT,
-    pool_name      VARCHAR(50) NOT NULL,
-    state          VARCHAR(50) NOT NULL,
-    lot_address    VARCHAR(100),
-    street_address VARCHAR(100),
-    PRIMARY KEY (pool_id)
+    poolId        BIGINT      NOT NULL AUTO_INCREMENT,
+    poolName      VARCHAR(50) NOT NULL,
+    poolState     VARCHAR(50) NOT NULL,
+    lotAddress    VARCHAR(100),
+    streetAddress VARCHAR(100),
+    PRIMARY KEY (poolId)
 );
