@@ -12,4 +12,6 @@ public interface SwimmingPoolMapper {
   void insert(SwimmingPool swimmingPool);
 
   SwimmingPoolDAO findByName(@Param("poolName") String poolName);
+
+  SwimmingPoolDAO update(SwimmingPool swimmingPool);
 }

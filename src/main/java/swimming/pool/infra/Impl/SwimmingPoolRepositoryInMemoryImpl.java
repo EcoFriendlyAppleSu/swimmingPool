@@ -42,9 +42,9 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
   }
 
   @Override
-  public void updateByName(Long poolId, String givenPoolName) {
-    SwimmingPool pool = map.get(poolId);
-    pool.changePoolName(givenPoolName);
+  public void update(SwimmingPool swimmingPool) {
+    SwimmingPool pool = map.get(swimmingPool.getPoolId());
+    map.put(pool.getPoolId(), pool);
   }
 
   @Override

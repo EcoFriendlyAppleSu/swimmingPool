@@ -28,12 +28,12 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool findByName(String poolName) {
     SwimmingPoolDAO swimmingPoolDAO = swimmingPoolMapper.findByName(poolName);
-    System.out.println(swimmingPoolDAO.toString());
-    return swimmingPoolDAO.toService();
+    return swimmingPoolDAO.toEntity();
   }
 
   @Override
-  public void updateByName(Long Id, String givenPoolName) {
+  public void update(SwimmingPool swimmingPool) {
+    swimmingPoolMapper.update(swimmingPool);
   }
 
   @Override

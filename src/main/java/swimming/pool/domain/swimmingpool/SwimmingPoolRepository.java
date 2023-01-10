@@ -8,7 +8,7 @@ public interface SwimmingPoolRepository {
 
   SwimmingPool findByName(String poolName);
 
-  void updateByName(Long poolId, String givenPoolName);
+  void update(SwimmingPool swimmingPool);
 
   List<SwimmingPool> findAll();
 

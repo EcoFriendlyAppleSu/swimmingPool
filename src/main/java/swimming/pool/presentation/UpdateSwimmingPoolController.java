@@ -1,6 +1,5 @@
 package swimming.pool.presentation;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,10 +21,10 @@ public class UpdateSwimmingPoolController {
   }
 
   @PostMapping("/{poolName}")
-  public ApiResponse<SwimmingUpdateResult> update(
+  public ApiResponse<SwimmingUpdateResult> updatePoolName(
       @RequestBody SwimmingPoolUpdateRequest poolUpdateRequest,
       @PathVariable String poolName) {
-    var result = service.updatePoolName(poolUpdateRequest.getPoolName(), poolName);
+    var result = service.update(poolUpdateRequest.getPoolName(), poolName);
     if (!result.equals(null)) {
       return ApiResponse.success(result);
     }

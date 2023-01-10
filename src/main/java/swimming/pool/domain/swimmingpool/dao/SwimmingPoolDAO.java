@@ -42,7 +42,7 @@ public class SwimmingPoolDAO {
     return streetAddress;
   }
 
-  public SwimmingPool toService() {
+  public SwimmingPool toEntity() {
     return new SwimmingPool(
         this.poolId,
         this.poolName,

@@ -38,5 +38,14 @@
     WHERE poolName = #{poolName}
   </select>
 
+  <update id="update" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool">
+    UPDATE swimming_pool
+    SET poolState     = #{state},
+        poolName      = #{poolName},
+        lotAddress    = #{lotNumberAddress},
+        streetAddress = #{streetNameAddress}
+    WHERE poolId = #{poolId}
+  </update>
+
 </mapper>
 
