@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
-import swimming.pool.infra.exception.DuplicatedPoolInformationException;
-import swimming.pool.infra.exception.SwimmingPoolNameNotExistException;
+import swimming.pool.infra.common.exception.ErrorCode;
+import swimming.pool.infra.common.exception.SwimmingPoolException;
 
 //@Repository
 public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepository {
@@ -22,7 +22,7 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     * swimmingPool.currentPoolId() == null, 값이 존재하지 않는 신규 데이터를 의미한다.
     * */
     if (swimmingPool.getPoolId() != null) {
-      throw new DuplicatedPoolInformationException("이미 존재하는 수영장입니다.");
+      throw new SwimmingPoolException(ErrorCode.DUPLICATE_POOL_NAME);
     }
     Long poolId = id.incrementAndGet();
     swimmingPool.setIdentifier(poolId);
@@ -38,7 +38,7 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
         return pool;
       }
     }
-    throw new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다.");
+    throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
   }
 
   @Override
@@ -51,7 +51,7 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
   public void deletePool(String poolName) {
     SwimmingPool foundPool = findAll().stream().filter(pool -> pool.getPoolName().equals(poolName))
         .findFirst()
-        .orElseThrow(() -> new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다."));
+        .orElseThrow(() -> new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST));
     map.remove(foundPool.getPoolId());
   }
 
