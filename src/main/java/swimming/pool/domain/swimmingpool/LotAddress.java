@@ -1,4 +1,4 @@
-package swimming.pool.domain;
+package swimming.pool.domain.swimmingpool;
 
 public class LotAddress {
 
@@ -15,8 +15,7 @@ public class LotAddress {
     return new LotAddress(address);
   }
 
-  public String currentLotAddress() {
+  public String getAddress() {
     return this.address;
   }
-
 }

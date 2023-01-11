@@ -1,4 +1,4 @@
-package swimming.pool.domain;
+package swimming.pool.domain.swimmingpool;
 
 public class StreetAddress {
 
@@ -15,7 +15,7 @@ public class StreetAddress {
     return new StreetAddress(address);
   }
 
-  public String currentStreetAddress() {
+  public String getAddress() {
     return address;
   }
 }

@@ -1,14 +1,14 @@
 package swimming.pool.infra.Impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
-import swimming.pool.domain.SwimmingPool;
-import swimming.pool.domain.SwimmingPoolRepository;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.exception.DuplicatedPoolInformationException;
+import swimming.pool.infra.exception.SwimmingPoolNameNotExistException;
 
 //@Repository
 public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepository {
@@ -21,7 +21,7 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     /*
     * swimmingPool.currentPoolId() == null, 값이 존재하지 않는 신규 데이터를 의미한다.
     * */
-    if (swimmingPool.currentPoolId() != null) {
+    if (swimmingPool.getPoolId() != null) {
       throw new DuplicatedPoolInformationException("이미 존재하는 수영장입니다.");
     }
     Long poolId = id.incrementAndGet();
@@ -29,5 +29,34 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     map.put(poolId, swimmingPool);
 
     return swimmingPool;
+  }
+
+  @Override
+  public SwimmingPool findByName(String poolName) {
+    for (SwimmingPool pool : map.values()) {
+      if (pool.getPoolName().equals(poolName)) {
+        return pool;
+      }
+    }
+    throw new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다.");
+  }
+
+  @Override
+  public void update(SwimmingPool swimmingPool) {
+    SwimmingPool pool = map.get(swimmingPool.getPoolId());
+    map.put(pool.getPoolId(), pool);
+  }
+
+  @Override
+  public void deletePool(String poolName) {
+    SwimmingPool foundPool = findAll().stream().filter(pool -> pool.getPoolName().equals(poolName))
+        .findFirst()
+        .orElseThrow(() -> new SwimmingPoolNameNotExistException("수영장이 존재하지 않습니다."));
+    map.remove(foundPool.getPoolId());
+  }
+
+  @Override
+  public List<SwimmingPool> findAll() {
+    return new ArrayList<>(map.values());
   }
 }

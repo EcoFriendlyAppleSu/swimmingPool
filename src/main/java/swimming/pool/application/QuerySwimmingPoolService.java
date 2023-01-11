@@ -1,0 +1,29 @@
+package swimming.pool.application;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import swimming.pool.application.result.SwimmingPoolResult;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
+import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
+
+@Service
+public class QuerySwimmingPoolService {
+
+  private final SwimmingPoolRepository repository;
+  Logger logger = LoggerFactory.getLogger(this.getClass());
+
+  public QuerySwimmingPoolService(SwimmingPoolRepository repository) {
+    this.repository = repository;
+  }
+
+  public SwimmingPoolResult findSwimmingPool(String poolName) {
+    SwimmingPool swimmingPool = repository.findByName(poolName);
+    return new SwimmingPoolResult(
+        swimmingPool.getPoolName(),
+        swimmingPool.getState(),
+        swimmingPool.getLotNumberAddress(),
+        swimmingPool.getLotNumberAddress()
+    );
+  }
+}
