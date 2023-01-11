@@ -1,6 +1,6 @@
 package swimming.pool.domain.swimmingpool;
 
-import swimming.pool.domain.exception.AddressNotAllowException;
+import swimming.pool.domain.swimmingpool.exception.AddressNotAllowException;
 import swimming.pool.infra.common.enums.PoolState;
 
 public class SwimmingPool {

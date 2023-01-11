@@ -1,4 +1,4 @@
-package swimming.pool.domain.exception;
+package swimming.pool.domain.swimmingpool.exception;
 
 public class AddressNotAllowException extends IllegalArgumentException {
 
