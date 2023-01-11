@@ -1,5 +1,6 @@
 package swimming.pool.domain.swimmingpool;
 
+import swimming.pool.domain.exception.AddressNotAllowException;
 import swimming.pool.infra.common.enums.PoolState;
 
 public class SwimmingPool {
@@ -15,6 +16,8 @@ public class SwimmingPool {
 
   private SwimmingPool(String poolName, String state, String lotNumberAddress,
       String streetNameAddress) {
+    addressValidation(lotNumberAddress, streetNameAddress);
+
     this.poolName = PoolName.from(poolName);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
@@ -24,7 +27,6 @@ public class SwimmingPool {
 
   public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
       String streetNameAddress) {
-
     return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress);
   }
 
@@ -33,8 +35,15 @@ public class SwimmingPool {
     this.poolId = poolId;
     this.poolName = PoolName.from(poolName);
     this.state = nameForState(state);
+    addressValidation(lotNumberAddress, streetNameAddress);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
+  }
+
+  private void addressValidation(String lotNumberAddress, String streetNameAddress) {
+    if (lotNumberAddress.isEmpty() && streetNameAddress.isEmpty()) {
+      throw new AddressNotAllowException();
+    }
   }
 
   private PoolState messageForState(String state) {
