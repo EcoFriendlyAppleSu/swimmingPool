@@ -3,10 +3,12 @@ package swimming.pool.application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import swimming.pool.application.result.SwimmingPoolResult;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 
+@Transactional(readOnly = true)
 @Service
 public class QuerySwimmingPoolService {
 
