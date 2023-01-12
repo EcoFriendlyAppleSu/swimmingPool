@@ -59,4 +59,8 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
   public List<SwimmingPool> findAll() {
     return new ArrayList<>(map.values());
   }
+
+  @Override
+  public boolean existById(Long poolId) {
+  }
 }

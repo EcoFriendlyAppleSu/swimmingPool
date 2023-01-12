@@ -1,5 +1,7 @@
 package swimming.pool.presentation.request;
 
+import swimming.pool.application.command.UpdateSwimmingPoolCommand;
+
 public class SwimmingPoolUpdateRequest {
 
   private String poolName;
@@ -25,4 +27,14 @@ public class SwimmingPoolUpdateRequest {
   public String getStreetAddress() {
     return streetAddress;
   }
+
+  public UpdateSwimmingPoolCommand toCommand() {
+    return new UpdateSwimmingPoolCommand(
+        this.poolName,
+        this.poolState,
+        this.lotAddress,
+        this.lotAddress
+    );
+  }
+
 }

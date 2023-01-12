@@ -20,11 +20,11 @@ public class UpdateSwimmingPoolController {
     this.service = service;
   }
 
-  @PostMapping("/{poolName}")
+  @PostMapping("/{id}")
   public ApiResponse<SwimmingUpdateResult> updatePoolName(
-      @RequestBody SwimmingPoolUpdateRequest poolUpdateRequest,
-      @PathVariable String poolName) {
-    var result = service.update(poolUpdateRequest.getPoolName(), poolName);
+      @RequestBody SwimmingPoolUpdateRequest updateRequest,
+      @PathVariable Long poolId) {
+    var result = service.update(updateRequest.toCommand(), poolId);
     return ApiResponse.success(result);
   }
 }

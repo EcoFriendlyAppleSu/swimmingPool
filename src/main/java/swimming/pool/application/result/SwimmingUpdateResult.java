@@ -4,16 +4,16 @@ import swimming.pool.domain.swimmingpool.SwimmingPool;
 
 public class SwimmingUpdateResult {
 
-  private String poolName;
+  private Long poolId;
 
   protected SwimmingUpdateResult() {
   }
 
-  public SwimmingUpdateResult(String poolName) {
-    this.poolName = poolName;
+  public SwimmingUpdateResult(Long poolId) {
+    this.poolId = poolId;
   }
 
-  public String getPoolName() {
-    return poolName;
+  public Long getPoolId() {
+    return poolId;
   }
 }

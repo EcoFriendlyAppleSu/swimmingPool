@@ -14,4 +14,5 @@ public interface SwimmingPoolRepository {
 
   void deletePool(String poolName);
 
+  boolean existById(Long poolId);
 }

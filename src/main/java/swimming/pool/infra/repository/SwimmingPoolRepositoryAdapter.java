@@ -44,4 +44,9 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public void deletePool(String poolName) {
   }
+
+  @Override
+  public boolean existById(Long poolId) {
+    return swimmingPoolMapper.existById(poolId);
+  }
 }

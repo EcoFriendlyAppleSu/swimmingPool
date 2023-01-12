@@ -14,4 +14,6 @@ public interface SwimmingPoolMapper {
   SwimmingPoolDAO findByName(@Param("poolName") String poolName);
 
   SwimmingPoolDAO update(SwimmingPool swimmingPool);
+
+  boolean existById(Long poolId);
 }
