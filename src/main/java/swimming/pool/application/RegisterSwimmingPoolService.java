@@ -3,6 +3,7 @@ package swimming.pool.application;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import swimming.pool.application.command.RegisterSwimmingPoolCommand;
 import swimming.pool.application.result.SwimmingPoolResult;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
@@ -17,6 +18,7 @@ public class RegisterSwimmingPoolService {
     this.repository = repository;
   }
 
+  @Transactional
   public SwimmingPoolResult register(RegisterSwimmingPoolCommand registerCommand) {
     SwimmingPool swimmingPool = repository.save(registerCommand.toEntity());
     return new SwimmingPoolResult(
@@ -27,6 +29,7 @@ public class RegisterSwimmingPoolService {
     );
   }
 
+  @Transactional
   public List<SwimmingPoolResult> registerMultiData(List<RegisterSwimmingPoolCommand> poolCommands) {
     List<SwimmingPool> swimmingPools = poolCommands.stream()
         .map(pool -> repository.save(pool.toEntity()))

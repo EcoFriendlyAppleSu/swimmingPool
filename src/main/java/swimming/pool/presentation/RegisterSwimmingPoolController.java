@@ -22,7 +22,7 @@ public class RegisterSwimmingPoolController {
   Logger logger = LoggerFactory.getLogger(this.getClass());
 
   private final RegisterSwimmingPoolService service;
-  @Autowired
+
   public RegisterSwimmingPoolController(RegisterSwimmingPoolService service) {
     this.service = service;
   }

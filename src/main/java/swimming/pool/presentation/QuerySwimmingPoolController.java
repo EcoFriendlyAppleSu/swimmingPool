@@ -23,9 +23,8 @@ public class QuerySwimmingPoolController {
 
   @GetMapping("/{poolName}")
   public ApiResponse<SwimmingPoolResult> findSwimmingPool(@PathVariable String poolName) {
-    SwimmingPoolResult swimmingPool = service.findSwimmingPool(poolName);
-    if (!swimmingPool.equals(null)) return ApiResponse.success(swimmingPool);
-    else return ApiResponse.fail("500", "Can't Find SwimmingPool Info");
+    var swimmingPool = service.findSwimmingPool(poolName);
+    return ApiResponse.success(swimmingPool);
   }
 
 }

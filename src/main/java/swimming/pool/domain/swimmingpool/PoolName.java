@@ -1,6 +1,6 @@
 package swimming.pool.domain.swimmingpool;
 
-import swimming.pool.domain.exception.PoolNameOutOfLengthException;
+import swimming.pool.domain.swimmingpool.exception.PoolNameOutOfLengthException;
 
 public class PoolName {
 

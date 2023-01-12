@@ -19,7 +19,7 @@ public class ApiResponse<T> {
     return new ApiResponse(true, data, null);
   }
 
-  public static <T> ApiResponse fail(String code, String message) {
+  public static <T> ApiResponse fail(int code, String message) {
     return new ApiResponse(false, null, new Error(code, message));
   }
 
@@ -37,15 +37,15 @@ public class ApiResponse<T> {
 
   public static class Error {
 
-    private final String code;
+    private final int code;
     private final String message;
 
-    public Error(String code, String message) {
+    public Error(int code, String message) {
       this.code = code;
       this.message = message;
     }
 
-    public String getCode() {
+    public int getCode() {
       return code;
     }
 

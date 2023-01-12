@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.domain.swimmingpool.dao.SwimmingPoolDAO;
+import swimming.pool.infra.common.enums.PoolState;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 
 @Repository
@@ -42,6 +43,12 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   }
 
   @Override
-  public void deletePool(String poolName) {
+  public void softDeletePool(Long poolId) {
+    swimmingPoolMapper.changeStateToCLOSE(poolId);
+  }
+
+  @Override
+  public boolean existById(Long poolId) {
+    return swimmingPoolMapper.existById(poolId);
   }
 }
