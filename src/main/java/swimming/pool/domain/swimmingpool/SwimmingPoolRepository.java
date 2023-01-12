@@ -12,7 +12,7 @@ public interface SwimmingPoolRepository {
 
   List<SwimmingPool> findAll();
 
-  void deletePool(String poolName);
+  void softDeletePool(Long poolId);
 
   boolean existById(Long poolId);
 }

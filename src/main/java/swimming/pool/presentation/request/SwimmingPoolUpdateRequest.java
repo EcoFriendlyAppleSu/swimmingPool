@@ -33,7 +33,7 @@ public class SwimmingPoolUpdateRequest {
         this.poolName,
         this.poolState,
         this.lotAddress,
-        this.lotAddress
+        this.streetAddress
     );
   }
 

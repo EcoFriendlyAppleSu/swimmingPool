@@ -50,5 +50,11 @@
   <select id="existById" parameterType="java.lang.Long" resultType="boolean">
     SELECT EXISTS(SELECT * FROM swimming_pool WHERE poolId = #{poolId})
   </select>
+
+  <update id="changeStateToCLOSE" parameterType="java.lang.Long">
+    UPDATE swimming_pool
+    SET poolState = 'CLOSE'
+    WHERE poolId = #{poolId}
+  </update>
 </mapper>
 

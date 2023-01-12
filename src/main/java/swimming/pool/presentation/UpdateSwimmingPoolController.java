@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import swimming.pool.application.UpdateSwimmingPoolService;
-import swimming.pool.application.result.SwimmingUpdateResult;
+import swimming.pool.application.result.SwimmingPoolUpdateResult;
 import swimming.pool.infra.common.ApiResponse;
 import swimming.pool.presentation.request.SwimmingPoolUpdateRequest;
 
@@ -21,7 +21,7 @@ public class UpdateSwimmingPoolController {
   }
 
   @PostMapping("/{id}")
-  public ApiResponse<SwimmingUpdateResult> updatePoolName(
+  public ApiResponse<SwimmingPoolUpdateResult> updatePoolName(
       @RequestBody SwimmingPoolUpdateRequest updateRequest,
       @PathVariable("id") Long poolId) {
     var result = service.update(updateRequest.toCommand(), poolId);

@@ -34,7 +34,7 @@ public class SwimmingPool {
       String streetNameAddress) {
     this.poolId = poolId;
     this.poolName = PoolName.from(poolName);
-    this.state = nameForState(state);
+    this.state = messageForState(state);
     addressValidation(lotNumberAddress, streetNameAddress);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);

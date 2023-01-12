@@ -16,4 +16,5 @@ public interface SwimmingPoolMapper {
   void update(SwimmingPool swimmingPool);
 
   boolean existById(Long poolId);
+  void changeStateToCLOSE(Long poolId);
 }
