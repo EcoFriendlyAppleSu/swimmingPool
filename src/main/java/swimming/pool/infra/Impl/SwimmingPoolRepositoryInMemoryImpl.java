@@ -11,12 +11,12 @@ import swimming.pool.infra.common.exception.ErrorCode;
 import swimming.pool.infra.common.exception.SwimmingPoolException;
 
 //@Repository
-public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepository {
+public class SwimmingPoolRepositoryInMemoryImpl{
 
   private final Map<Long, SwimmingPool> map = new HashMap<>();
   private final AtomicLong id = new AtomicLong();
 
-  @Override
+  // @Override
   public SwimmingPool save(SwimmingPool swimmingPool) {
     /*
     * swimmingPool.currentPoolId() == null, 값이 존재하지 않는 신규 데이터를 의미한다.
@@ -31,7 +31,7 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     return swimmingPool;
   }
 
-  @Override
+  // @Override
   public SwimmingPool findByName(String poolName) {
     for (SwimmingPool pool : map.values()) {
       if (pool.getPoolName().equals(poolName)) {
@@ -41,13 +41,13 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
   }
 
-  @Override
+  // @Override
   public void update(SwimmingPool swimmingPool) {
     SwimmingPool pool = map.get(swimmingPool.getPoolId());
     map.put(pool.getPoolId(), pool);
   }
 
-  @Override
+  // @Override
   public void deletePool(String poolName) {
     SwimmingPool foundPool = findAll().stream().filter(pool -> pool.getPoolName().equals(poolName))
         .findFirst()
@@ -55,12 +55,13 @@ public class SwimmingPoolRepositoryInMemoryImpl implements SwimmingPoolRepositor
     map.remove(foundPool.getPoolId());
   }
 
-  @Override
+  // @Override
   public List<SwimmingPool> findAll() {
     return new ArrayList<>(map.values());
   }
 
-  @Override
+  // @Override
   public boolean existById(Long poolId) {
+    return true;
   }
 }
