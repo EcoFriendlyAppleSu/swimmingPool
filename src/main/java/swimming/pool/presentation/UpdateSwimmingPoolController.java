@@ -23,7 +23,7 @@ public class UpdateSwimmingPoolController {
   @PostMapping("/{id}")
   public ApiResponse<SwimmingUpdateResult> updatePoolName(
       @RequestBody SwimmingPoolUpdateRequest updateRequest,
-      @PathVariable Long poolId) {
+      @PathVariable("id") Long poolId) {
     var result = service.update(updateRequest.toCommand(), poolId);
     return ApiResponse.success(result);
   }

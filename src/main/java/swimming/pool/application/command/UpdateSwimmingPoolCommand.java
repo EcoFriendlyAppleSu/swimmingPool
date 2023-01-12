@@ -4,6 +4,8 @@ import swimming.pool.domain.swimmingpool.SwimmingPool;
 
 public class UpdateSwimmingPoolCommand {
 
+  private Long poolId;
+
   private String poolName;
   private String state;
   private String LotNumberAddress;
@@ -18,6 +20,14 @@ public class UpdateSwimmingPoolCommand {
     this.state = state;
     LotNumberAddress = lotNumberAddress;
     StreetNameAddress = streetNameAddress;
+  }
+
+  public void initPoolId(Long poolId) {
+    this.poolId = poolId;
+  }
+
+  public Long getPoolId() {
+    return poolId;
   }
 
   public String getPoolName() {
@@ -37,7 +47,8 @@ public class UpdateSwimmingPoolCommand {
   }
 
   public SwimmingPool toEntity() {
-    return SwimmingPool.register(
+    return new SwimmingPool(
+        this.poolId,
         this.poolName,
         this.state,
         this.LotNumberAddress,

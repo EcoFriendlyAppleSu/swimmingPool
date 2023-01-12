@@ -19,11 +19,12 @@ public class UpdateSwimmingPoolService {
   }
 
   @Transactional
-  public SwimmingUpdateResult update(UpdateSwimmingPoolCommand command, Long poolId) {
+  public SwimmingUpdateResult update(UpdateSwimmingPoolCommand updateCommand, Long poolId) {
     if (!repository.existById(poolId)) { // return true or false
       throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
     }
-    repository.update(command.toEntity());
+    updateCommand.initPoolId(poolId);
+    repository.update(updateCommand.toEntity());
     return new SwimmingUpdateResult(poolId);
   }
 }
