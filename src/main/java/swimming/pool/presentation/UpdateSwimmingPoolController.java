@@ -25,10 +25,7 @@ public class UpdateSwimmingPoolController {
       @RequestBody SwimmingPoolUpdateRequest poolUpdateRequest,
       @PathVariable String poolName) {
     var result = service.update(poolUpdateRequest.getPoolName(), poolName);
-    if (!result.equals(null)) {
-      return ApiResponse.success(result);
-    }
-    return ApiResponse.fail("0003", "수영장 이름 변경에 실패했습니다.");
+    return ApiResponse.success(result);
   }
 }
 
