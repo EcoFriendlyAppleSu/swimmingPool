@@ -21,7 +21,7 @@ class SwimmingPoolRepositoryInMemoryImplTest {
   @Test
   public void swimmingPoolEnumTypeCheckTest() throws Exception {
     // given
-    SwimmingPool register = SwimmingPool.register("lee", "영업중", "서울", "영등포");
+    SwimmingPool register = SwimmingPool.register("lee", "영업중", "서울", "영등포", 123, 37);
 
     // then
     System.out.println(register.toString());

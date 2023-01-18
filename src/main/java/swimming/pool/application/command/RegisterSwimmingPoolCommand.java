@@ -17,12 +17,22 @@ public class RegisterSwimmingPoolCommand {
     this.StreetNameAddress = streetNameAddress;
   }
 
-  public SwimmingPool toEntity() {
+  public SwimmingPool toEntity(double xpos, double ypos) {
     return SwimmingPool.register(
         this.poolName,
         this.state,
         this.LotNumberAddress,
-        this.StreetNameAddress
+        this.StreetNameAddress,
+        xpos,
+        ypos
     );
+  }
+
+  public String getLotNumberAddress() {
+    return LotNumberAddress;
+  }
+
+  public String getStreetNameAddress() {
+    return StreetNameAddress;
   }
 }

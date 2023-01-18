@@ -9,16 +9,21 @@ public class SwimmingPoolResult {
   private String LotNumberAddress; // 지번 주소
   private String StreetNameAddress; // 도로명 주소
 
+  private double xpos;
+  private double ypos;
+
   protected SwimmingPoolResult() {
 
   }
 
   public SwimmingPoolResult(String poolName, PoolState state, String lotNumberAddress,
-      String streetNameAddress) {
+      String streetNameAddress, double xpos, double ypos) {
     this.poolName = poolName;
     this.state = state.getMessage();
     this.LotNumberAddress = lotNumberAddress;
     this.StreetNameAddress = streetNameAddress;
+    this.xpos = xpos;
+    this.ypos = ypos;
   }
 
   public String getPoolName() {

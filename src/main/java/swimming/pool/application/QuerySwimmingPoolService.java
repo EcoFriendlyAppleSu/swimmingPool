@@ -25,7 +25,9 @@ public class QuerySwimmingPoolService {
         swimmingPool.getPoolName(),
         swimmingPool.getState(),
         swimmingPool.getLotNumberAddress(),
-        swimmingPool.getLotNumberAddress()
+        swimmingPool.getLotNumberAddress(),
+        swimmingPool.getxPosition(),
+        swimmingPool.getyPosition()
     );
   }
 }
