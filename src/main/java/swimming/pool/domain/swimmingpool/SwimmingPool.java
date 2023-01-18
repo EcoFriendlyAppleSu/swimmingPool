@@ -11,11 +11,14 @@ public class SwimmingPool {
   private LotAddress lotNumberAddress; // 지번 주소
   private StreetAddress streetNameAddress; // 도로명 주소
 
+  private XPosition xPosition;
+  private YPosition yPosition;
+
   public SwimmingPool() {
   }
 
   private SwimmingPool(String poolName, String state, String lotNumberAddress,
-      String streetNameAddress) {
+      String streetNameAddress, double xpos, double ypos) {
     addressValidation(lotNumberAddress, streetNameAddress);
 
     this.poolName = PoolName.from(poolName);
@@ -23,11 +26,13 @@ public class SwimmingPool {
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
     this.state = messageForState(state);
     this.state = messageForState(state);
+    this.xPosition = XPosition.from(xpos);
+    this.yPosition = YPosition.from(ypos);
   }
 
   public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
-      String streetNameAddress) {
-    return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress);
+      String streetNameAddress, double xpos, double ypos) {
+    return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress, xpos, ypos);
   }
 
   public SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
@@ -117,14 +122,11 @@ public class SwimmingPool {
     return streetNameAddress.getAddress();
   }
 
-  @Override
-  public String toString() {
-    return "SwimmingPool{" +
-        "poolId=" + poolId +
-        ", poolName=" + poolName.getPoolName() +
-        ", state=" + getState() +
-        ", lotNumberAddress=" + lotNumberAddress.getAddress() +
-        ", streetNameAddress=" + streetNameAddress.getAddress() +
-        '}';
+  public double getxPosition() {
+    return xPosition.getxPos();
+  }
+
+  public double getyPosition() {
+    return yPosition.getyPos();
   }
 }

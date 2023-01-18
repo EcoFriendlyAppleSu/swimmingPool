@@ -10,7 +10,7 @@ class SwimmingPoolTest {
 
   @Test
   public void swimmingPoolAddressExceptionTest() throws Exception {
-    Assertions.assertThatThrownBy(() -> SwimmingPool.register("Lee", "영업중", "", ""))
+    Assertions.assertThatThrownBy(() -> SwimmingPool.register("Lee", "영업중", "", "", 0, 0))
         .isInstanceOf(AddressNotAllowException.class);
   }
 

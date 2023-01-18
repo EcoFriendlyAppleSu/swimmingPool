@@ -36,3 +36,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Personal Ignore Path ###
+src/test/java/swimming/pool/presentation/ExternalAPIConnectionTest.java
+src/main/java/swimming/pool/infra/coordinate/NaverApiKey.java

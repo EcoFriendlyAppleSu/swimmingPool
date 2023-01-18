@@ -19,8 +19,6 @@ import swimming.pool.presentation.request.SwimmingPoolInfoWrapper;
 @RequestMapping("/swimmingpool/register")
 public class RegisterSwimmingPoolController {
 
-  Logger logger = LoggerFactory.getLogger(this.getClass());
-
   private final RegisterSwimmingPoolService service;
 
   public RegisterSwimmingPoolController(RegisterSwimmingPoolService service) {
