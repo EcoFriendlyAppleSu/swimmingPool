@@ -1,6 +1,6 @@
-package swimming.pool.presentation.request;
+package swimming.pool.presentation.swimmingpool.request;
 
-import swimming.pool.application.command.UpdateSwimmingPoolCommand;
+import swimming.pool.application.swimmingpool.command.UpdateSwimmingPoolCommand;
 
 public class SwimmingPoolUpdateRequest {
 

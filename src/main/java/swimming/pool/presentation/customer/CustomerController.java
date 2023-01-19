@@ -1,4 +1,4 @@
-package swimming.pool.presentation;
+package swimming.pool.presentation.customer;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,9 +1,9 @@
-package swimming.pool.application;
+package swimming.pool.application.swimmingpool;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import swimming.pool.application.command.UpdateSwimmingPoolCommand;
-import swimming.pool.application.result.SwimmingPoolUpdateResult;
+import swimming.pool.application.swimmingpool.command.UpdateSwimmingPoolCommand;
+import swimming.pool.application.swimmingpool.result.SwimmingPoolUpdateResult;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.common.exception.ErrorCode;
 import swimming.pool.infra.common.exception.SwimmingPoolException;

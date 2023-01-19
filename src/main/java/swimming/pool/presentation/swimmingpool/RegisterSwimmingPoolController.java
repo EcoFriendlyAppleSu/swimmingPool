@@ -1,19 +1,16 @@
-package swimming.pool.presentation;
+package swimming.pool.presentation.swimmingpool;
 
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import swimming.pool.application.RegisterSwimmingPoolService;
-import swimming.pool.application.result.SwimmingPoolResult;
+import swimming.pool.application.swimmingpool.RegisterSwimmingPoolService;
+import swimming.pool.application.swimmingpool.result.SwimmingPoolResult;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.infra.common.ApiResponse;
-import swimming.pool.presentation.request.SwimmingPoolInfoRequest;
-import swimming.pool.presentation.request.SwimmingPoolInfoWrapper;
+import swimming.pool.presentation.swimmingpool.request.SwimmingPoolInfoRequest;
+import swimming.pool.presentation.swimmingpool.request.SwimmingPoolInfoWrapper;
 
 @RestController
 @RequestMapping("/swimmingpool/register")
