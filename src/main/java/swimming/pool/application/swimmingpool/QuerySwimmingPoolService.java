@@ -13,13 +13,12 @@ import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 public class QuerySwimmingPoolService {
 
   private final SwimmingPoolRepository repository;
-  Logger logger = LoggerFactory.getLogger(this.getClass());
 
   public QuerySwimmingPoolService(SwimmingPoolRepository repository) {
     this.repository = repository;
   }
 
-  public SwimmingPoolResult findSwimmingPool(String poolName) {
+  public SwimmingPoolResult findSwimmingPoolByName(String poolName) {
     SwimmingPool swimmingPool = repository.findByName(poolName);
     return new SwimmingPoolResult(
         swimmingPool.getPoolName(),
@@ -32,4 +31,15 @@ public class QuerySwimmingPoolService {
   }
 
 
+  public SwimmingPoolResult findSwimmingPoolById(Long poolId) {
+    SwimmingPool swimmingPool = repository.findById(poolId);
+    return new SwimmingPoolResult(
+        swimmingPool.getPoolName(),
+        swimmingPool.getState(),
+        swimmingPool.getLotNumberAddress(),
+        swimmingPool.getLotNumberAddress(),
+        swimmingPool.getxPosition(),
+        swimmingPool.getyPosition()
+    );
+  }
 }

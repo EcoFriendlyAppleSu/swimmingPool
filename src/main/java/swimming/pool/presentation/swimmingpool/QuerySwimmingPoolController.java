@@ -12,7 +12,7 @@ import swimming.pool.infra.common.ApiResponse;
  * 조회와 관련된 일을 수행합니다.
  * */
 @RestController
-@RequestMapping("/swimmingpool")
+@RequestMapping("/swimmingpool/query")
 public class QuerySwimmingPoolController {
 
   private final QuerySwimmingPoolService service;
@@ -21,14 +21,15 @@ public class QuerySwimmingPoolController {
     this.service = service;
   }
 
-  @GetMapping("/{poolName}")
+  @GetMapping("/name/{poolName}")
   public ApiResponse<SwimmingPoolResult> findSwimmingPoolByName(@PathVariable String poolName) {
-    var swimmingPool = service.findSwimmingPool(poolName);
+    var swimmingPool = service.findSwimmingPoolByName(poolName);
     return ApiResponse.success(swimmingPool);
   }
 
-  @GetMapping("/{poolId}")
+  @GetMapping("/id/{poolId}")
   public ApiResponse<SwimmingPoolResult> findSwimmingPoolById(@PathVariable Long poolId) {
-    return null;
+    var swimmingPool = service.findSwimmingPoolById(poolId);
+    return ApiResponse.success(swimmingPool);
   }
 }
