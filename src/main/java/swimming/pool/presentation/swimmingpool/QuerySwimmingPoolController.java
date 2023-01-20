@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import swimming.pool.application.swimmingpool.QuerySwimmingPoolService;
+import swimming.pool.application.swimmingpool.result.SwimmingPoolQueryResult;
 import swimming.pool.application.swimmingpool.result.SwimmingPoolResult;
 import swimming.pool.infra.common.ApiResponse;
 
@@ -22,13 +23,13 @@ public class QuerySwimmingPoolController {
   }
 
   @GetMapping("/name/{poolName}")
-  public ApiResponse<SwimmingPoolResult> findSwimmingPoolByName(@PathVariable String poolName) {
+  public ApiResponse<SwimmingPoolQueryResult> findSwimmingPoolByName(@PathVariable String poolName) {
     var swimmingPool = service.findSwimmingPoolByName(poolName);
     return ApiResponse.success(swimmingPool);
   }
 
   @GetMapping("/id/{poolId}")
-  public ApiResponse<SwimmingPoolResult> findSwimmingPoolById(@PathVariable Long poolId) {
+  public ApiResponse<SwimmingPoolQueryResult> findSwimmingPoolById(@PathVariable Long poolId) {
     var swimmingPool = service.findSwimmingPoolById(poolId);
     return ApiResponse.success(swimmingPool);
   }

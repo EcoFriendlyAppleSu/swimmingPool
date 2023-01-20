@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import swimming.pool.application.swimmingpool.result.SwimmingPoolQueryResult;
 import swimming.pool.application.swimmingpool.result.SwimmingPoolResult;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
@@ -18,28 +19,24 @@ public class QuerySwimmingPoolService {
     this.repository = repository;
   }
 
-  public SwimmingPoolResult findSwimmingPoolByName(String poolName) {
+  public SwimmingPoolQueryResult findSwimmingPoolByName(String poolName) {
     SwimmingPool swimmingPool = repository.findByName(poolName);
-    return new SwimmingPoolResult(
+    return new SwimmingPoolQueryResult(
         swimmingPool.getPoolName(),
         swimmingPool.getState(),
         swimmingPool.getLotNumberAddress(),
-        swimmingPool.getLotNumberAddress(),
-        swimmingPool.getxPosition(),
-        swimmingPool.getyPosition()
+        swimmingPool.getStreetNameAddress()
     );
   }
 
 
-  public SwimmingPoolResult findSwimmingPoolById(Long poolId) {
+  public SwimmingPoolQueryResult findSwimmingPoolById(Long poolId) {
     SwimmingPool swimmingPool = repository.findById(poolId);
-    return new SwimmingPoolResult(
+    return new SwimmingPoolQueryResult(
         swimmingPool.getPoolName(),
         swimmingPool.getState(),
         swimmingPool.getLotNumberAddress(),
-        swimmingPool.getLotNumberAddress(),
-        swimmingPool.getxPosition(),
-        swimmingPool.getyPosition()
+        swimmingPool.getStreetNameAddress()
     );
   }
 }
