@@ -1,4 +1,4 @@
-package swimming.pool.application.command;
+package swimming.pool.application.swimmingpool.command;
 
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 

@@ -10,16 +10,21 @@ public class SwimmingPoolDAO {
   private String lotAddress;
   private String streetAddress;
 
+  private double xPos;
+  private double yPos;
+
   protected SwimmingPoolDAO() {
   }
 
   public SwimmingPoolDAO(Long poolId, String poolName, String poolState, String lotAddress,
-      String streetAddress) {
+      String streetAddress, double xPos, double yPos) {
     this.poolId = poolId;
     this.poolName = poolName;
     this.poolState = poolState;
     this.lotAddress = lotAddress;
     this.streetAddress = streetAddress;
+    this.xPos = xPos;
+    this.yPos = yPos;
   }
 
   public Long getPoolId() {
@@ -42,13 +47,23 @@ public class SwimmingPoolDAO {
     return streetAddress;
   }
 
+  public double getxPos() {
+    return xPos;
+  }
+
+  public double getyPos() {
+    return yPos;
+  }
+
   public SwimmingPool toEntity() {
     return new SwimmingPool(
         this.poolId,
         this.poolName,
         this.poolState,
         this.lotAddress,
-        this.streetAddress
+        this.streetAddress,
+        this.xPos,
+        this.yPos
     );
   }
 

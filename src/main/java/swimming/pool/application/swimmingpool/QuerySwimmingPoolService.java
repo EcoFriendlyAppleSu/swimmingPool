@@ -1,10 +1,10 @@
-package swimming.pool.application;
+package swimming.pool.application.swimmingpool;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import swimming.pool.application.result.SwimmingPoolResult;
+import swimming.pool.application.swimmingpool.result.SwimmingPoolResult;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 

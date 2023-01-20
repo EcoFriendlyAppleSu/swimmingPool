@@ -1,8 +1,8 @@
-package swimming.pool.presentation.request;
+package swimming.pool.presentation.swimmingpool.request;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import swimming.pool.application.command.RegisterSwimmingPoolCommand;
+import swimming.pool.application.swimmingpool.command.RegisterSwimmingPoolCommand;
 
 public class SwimmingPoolInfoWrapper {
 

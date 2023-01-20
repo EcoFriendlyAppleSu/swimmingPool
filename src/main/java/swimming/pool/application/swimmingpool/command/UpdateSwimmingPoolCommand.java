@@ -1,4 +1,4 @@
-package swimming.pool.application.command;
+package swimming.pool.application.swimmingpool.command;
 
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 
@@ -46,13 +46,16 @@ public class UpdateSwimmingPoolCommand {
     return StreetNameAddress;
   }
 
+  // TODO: 2023/01/19 변경된 주소에 맞게 좌표 값이 변경되는 로직을 만들어야 합니다.
   public SwimmingPool toEntity() {
     return new SwimmingPool(
         this.poolId,
         this.poolName,
         this.state,
         this.LotNumberAddress,
-        this.StreetNameAddress
+        this.StreetNameAddress,
+        1.0,
+        2.0
     );
   }
 

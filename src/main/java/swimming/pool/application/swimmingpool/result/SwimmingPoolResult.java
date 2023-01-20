@@ -1,4 +1,4 @@
-package swimming.pool.application.result;
+package swimming.pool.application.swimmingpool.result;
 
 import swimming.pool.infra.common.enums.PoolState;
 

@@ -1,16 +1,11 @@
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/swimmingPool
-    username: lee
-    password:
-# JDBC API를 이용하여 DB 연동을 처리하려면 반드시 DB로부터 Connection을 얻어와야 합니다.
-# 이를 위해 DB와의 물리적인 연결을 지원하는 DataSource가 필요합니다.
-
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:h2/schema.sql
+    url: jdbc:mysql://localhost:3306/pool?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowMultiQueries=true&noAccessToProcedureBodies=true&rewriteBatchedStatements=true
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # JDBC API를 이용하여 DB 연동을 처리하려면 반드시 DB로부터 Connection을 얻어와야 합니다.
+  # 이를 위해 DB와의 물리적인 연결을 지원하는 DataSource가 필요합니다.
 
 # datasource initialization-mode는 deprecated 되었습니다.
 

@@ -1,12 +1,12 @@
-package swimming.pool.application;
+package swimming.pool.application.swimmingpool;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import swimming.pool.application.command.RegisterSwimmingPoolCommand;
-import swimming.pool.application.result.SwimmingPoolResult;
+import swimming.pool.application.swimmingpool.command.RegisterSwimmingPoolCommand;
+import swimming.pool.application.swimmingpool.result.SwimmingPoolResult;
 import swimming.pool.domain.swimmingpool.AddressToPosition;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;

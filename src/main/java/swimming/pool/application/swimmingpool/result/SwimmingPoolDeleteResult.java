@@ -1,4 +1,4 @@
-package swimming.pool.application.result;
+package swimming.pool.application.swimmingpool.result;
 
 public class SwimmingPoolDeleteResult {
 
