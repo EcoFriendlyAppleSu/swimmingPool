@@ -17,4 +17,6 @@ public interface SwimmingPoolMapper {
 
   boolean existById(Long poolId);
   void changeStateToCLOSE(Long poolId);
+
+  SwimmingPoolDAO findById(Long poolId);
 }

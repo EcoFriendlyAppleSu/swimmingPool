@@ -30,4 +30,6 @@ public class QuerySwimmingPoolService {
         swimmingPool.getyPosition()
     );
   }
+
+
 }

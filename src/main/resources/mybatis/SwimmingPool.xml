@@ -48,6 +48,12 @@
     WHERE poolName = #{poolName}
   </select>
 
+  <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.domain.swimmingpool.dao.SwimmingPoolDAO">
+    SELECT poolId, poolState, poolName, lotAddress, streetAddress, x, y
+    FROM swimming_pool
+    WHERE poolId = #{poolId}
+  </select>
+
   <update id="update" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool">
     UPDATE swimming_pool
     SET poolState     = #{state},

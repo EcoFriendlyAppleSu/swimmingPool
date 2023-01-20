@@ -15,4 +15,6 @@ public interface SwimmingPoolRepository {
   void softDeletePool(Long poolId);
 
   boolean existById(Long poolId);
+
+  SwimmingPool findById(Long poolId);
 }

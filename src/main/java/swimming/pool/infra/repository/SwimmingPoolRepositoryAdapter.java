@@ -51,4 +51,10 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   public boolean existById(Long poolId) {
     return swimmingPoolMapper.existById(poolId);
   }
+
+  @Override
+  public SwimmingPool findById(Long poolId) {
+    SwimmingPoolDAO poolDAO = swimmingPoolMapper.findById(poolId);
+    return poolDAO.toEntity();
+  }
 }

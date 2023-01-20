@@ -9,8 +9,8 @@ import swimming.pool.application.swimmingpool.result.SwimmingPoolResult;
 import swimming.pool.infra.common.ApiResponse;
 
 /*
-* 조회와 관련된 일을 수행합니다.
-* */
+ * 조회와 관련된 일을 수행합니다.
+ * */
 @RestController
 @RequestMapping("/swimmingpool")
 public class QuerySwimmingPoolController {
@@ -22,9 +22,13 @@ public class QuerySwimmingPoolController {
   }
 
   @GetMapping("/{poolName}")
-  public ApiResponse<SwimmingPoolResult> findSwimmingPool(@PathVariable String poolName) {
+  public ApiResponse<SwimmingPoolResult> findSwimmingPoolByName(@PathVariable String poolName) {
     var swimmingPool = service.findSwimmingPool(poolName);
     return ApiResponse.success(swimmingPool);
   }
 
+  @GetMapping("/{poolId}")
+  public ApiResponse<SwimmingPoolResult> findSwimmingPoolById(@PathVariable Long poolId) {
+    return null;
+  }
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import swimming.pool.application.swimmingpool.command.UpdateSwimmingPoolCommand;
 import swimming.pool.application.swimmingpool.result.SwimmingPoolUpdateResult;
+import swimming.pool.domain.swimmingpool.AddressToPosition;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.common.exception.ErrorCode;
 import swimming.pool.infra.common.exception.SwimmingPoolException;
@@ -12,9 +13,12 @@ import swimming.pool.infra.common.exception.SwimmingPoolException;
 public class UpdateSwimmingPoolService {
 
   private final SwimmingPoolRepository repository;
+  private final AddressToPosition addressToPosition;
 
-  public UpdateSwimmingPoolService(SwimmingPoolRepository repository) {
+  public UpdateSwimmingPoolService(SwimmingPoolRepository repository,
+      AddressToPosition addressToPosition) {
     this.repository = repository;
+    this.addressToPosition = addressToPosition;
   }
 
   @Transactional
@@ -23,6 +27,7 @@ public class UpdateSwimmingPoolService {
       throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
     }
     updateCommand.initPoolId(poolId);
+
     repository.update(updateCommand.toEntity());
     return new SwimmingPoolUpdateResult(updateCommand.getPoolId());
   }
