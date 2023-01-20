@@ -25,7 +25,6 @@ public class SwimmingPool {
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
     this.state = messageForState(state);
-    this.state = messageForState(state);
     this.xPosition = XPosition.from(xpos);
     this.yPosition = YPosition.from(ypos);
   }
@@ -36,13 +35,15 @@ public class SwimmingPool {
   }
 
   public SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
-      String streetNameAddress) {
+      String streetNameAddress, double xPos, double yPos) {
     this.poolId = poolId;
     this.poolName = PoolName.from(poolName);
-    this.state = messageForState(state);
+    this.state = nameForState(state);
     addressValidation(lotNumberAddress, streetNameAddress);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
+    this.xPosition = XPosition.from(xPos);
+    this.yPosition = YPosition.from(yPos);
   }
 
   private void addressValidation(String lotNumberAddress, String streetNameAddress) {
