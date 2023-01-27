@@ -47,7 +47,7 @@ public class SwimmingPool {
   }
 
   private void addressValidation(String lotNumberAddress, String streetNameAddress) {
-    if (lotNumberAddress.isEmpty() && streetNameAddress.isEmpty()) {
+    if (lotNumberAddress == null && streetNameAddress == null) {
       throw new AddressNotAllowException();
     }
   }

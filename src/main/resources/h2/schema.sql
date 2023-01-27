@@ -6,7 +6,7 @@ CREATE TABLE swimming_pool
     poolState     VARCHAR(50) NOT NULL,
     lotAddress    VARCHAR(100),
     streetAddress VARCHAR(100),
-    x             DOUBLE,
-    y             DOUBLE,
+    x             FLOAT,
+    y             FLOAT,
     PRIMARY KEY (poolId)
 );

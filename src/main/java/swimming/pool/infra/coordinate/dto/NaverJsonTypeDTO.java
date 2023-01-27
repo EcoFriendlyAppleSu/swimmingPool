@@ -17,4 +17,9 @@ public class NaverJsonTypeDTO {
   public List<NaverJsonAddressDTO> getAddresses() {
     return addresses;
   }
+
+  @Override
+  public String toString() {
+    return addresses.toString();
+  }
 }
