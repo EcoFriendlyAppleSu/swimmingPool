@@ -19,12 +19,12 @@ public class PositionCalculator implements AddressToPosition {
   }
 
   private String checkAddress(String lotAddress, String streetAddress) {
-    if (lotAddress.isEmpty()) {
-      return streetAddress;
-    }
-    if (streetAddress.isEmpty()) {
+    if (streetAddress == null) {
       return lotAddress;
     }
-    return lotAddress; // 지번 주소가 있다면 지번 주소를 기본 값으로 처리할 목적입니다.
+    if (lotAddress == null) {
+      return streetAddress;
+    }
+    return ""; // 지번 주소가 있다면 지번 주소를 기본 값으로 처리할 목적입니다.
   }
 }

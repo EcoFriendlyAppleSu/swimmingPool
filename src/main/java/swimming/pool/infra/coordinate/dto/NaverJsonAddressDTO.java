@@ -20,4 +20,12 @@ public class NaverJsonAddressDTO {
   public Double getY() {
     return y;
   }
+
+  @Override
+  public String toString() {
+    return "NaverJsonAddressDTO{" +
+        "x=" + x +
+        ", y=" + y +
+        '}';
+  }
 }
