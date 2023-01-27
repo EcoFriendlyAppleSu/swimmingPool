@@ -20,6 +20,9 @@ public class NaverJsonTypeDTO {
 
   @Override
   public String toString() {
+    for (NaverJsonAddressDTO address : addresses) {
+      System.out.println(address.toString());
+    }
     return addresses.toString();
   }
 }
