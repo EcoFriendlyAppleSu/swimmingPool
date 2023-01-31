@@ -11,9 +11,8 @@ public class SwimmingPool {
   private LotAddress lotNumberAddress; // 지번 주소
   private StreetAddress streetNameAddress; // 도로명 주소
 
-  private XPosition xPosition;
-  private YPosition yPosition;
-
+  private double xPosition;
+  private double yPosition;
   public SwimmingPool() {
   }
 
@@ -25,16 +24,11 @@ public class SwimmingPool {
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
     this.state = messageForState(state);
-    this.xPosition = XPosition.from(xpos);
-    this.yPosition = YPosition.from(ypos);
+    this.xPosition = xpos;
+    this.yPosition = ypos;
   }
 
-  public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
-      String streetNameAddress, double xpos, double ypos) {
-    return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress, xpos, ypos);
-  }
-
-  public SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
+  private SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
       String streetNameAddress, double xPos, double yPos) {
     this.poolId = poolId;
     this.poolName = PoolName.from(poolName);
@@ -42,8 +36,19 @@ public class SwimmingPool {
     addressValidation(lotNumberAddress, streetNameAddress);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
-    this.xPosition = XPosition.from(xPos);
-    this.yPosition = YPosition.from(yPos);
+    this.xPosition = xPos;
+    this.yPosition = yPos;
+  }
+
+  public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
+      String streetNameAddress, double xpos, double ypos) {
+    return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress, xpos, ypos);
+  }
+
+  public static SwimmingPool getInstance(Long poolId, String poolName, String state, String lotNumberAddress,
+      String streetNameAddress, double xPos, double yPos) {
+    return new SwimmingPool(poolId, poolName, state, lotNumberAddress, streetNameAddress, xPos,
+        yPos);
   }
 
   private void addressValidation(String lotNumberAddress, String streetNameAddress) {
@@ -124,10 +129,10 @@ public class SwimmingPool {
   }
 
   public double getxPosition() {
-    return xPosition.getxPos();
+    return xPosition;
   }
 
   public double getyPosition() {
-    return yPosition.getyPos();
+    return yPosition;
   }
 }

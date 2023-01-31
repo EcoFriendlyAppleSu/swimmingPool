@@ -4,8 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
-import swimming.pool.domain.swimmingpool.dao.SwimmingPoolDAO;
-import swimming.pool.infra.common.enums.PoolState;
+import swimming.pool.infra.coordinate.LocationTranslator;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 
 @Repository
@@ -28,8 +27,9 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   @Override
   public SwimmingPool findByName(String poolName) {
-    SwimmingPoolDAO swimmingPoolDAO = swimmingPoolMapper.findByName(poolName);
-    return swimmingPoolDAO.toEntity();
+    var dto = swimmingPoolMapper.findByName(poolName);
+    var location = LocationTranslator.doTranslate(dto.getLocation());
+    return dto.toEntity(location.getXpos(), location.getYpos());
   }
 
   @Override
@@ -54,7 +54,8 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   @Override
   public SwimmingPool findById(Long poolId) {
-    SwimmingPoolDAO poolDAO = swimmingPoolMapper.findById(poolId);
-    return poolDAO.toEntity();
+    var dto = swimmingPoolMapper.findById(poolId);
+    var location = LocationTranslator.doTranslate(dto.getLocation());
+    return dto.toEntity(location.getXpos(), location.getYpos());
   }
 }
