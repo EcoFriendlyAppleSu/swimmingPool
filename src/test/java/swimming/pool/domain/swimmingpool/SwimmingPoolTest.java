@@ -30,7 +30,7 @@ class SwimmingPoolTest {
   public void swimmingPoolPoolStateEnumTypeSettingMethodTest() throws Exception {
     // DB에 들어간 데이터는 Enum Type의 Name으로 저장됩니다.
     // DB 에서 값을 꺼내올 때, nameForState를 사용해야 합니다.
-    SwimmingPool pool = new SwimmingPool(1L, "Lee", "OPEN", "서울", "서울", 12, 37);
+    SwimmingPool pool = SwimmingPool.getInstance(1L, "Lee", "OPEN", "서울", "서울", 12, 37);
     assertThat(pool.getState().name()).isEqualTo(PoolState.OPEN.name());
   }
 
