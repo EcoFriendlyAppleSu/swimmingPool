@@ -11,9 +11,8 @@ public class SwimmingPool {
   private LotAddress lotNumberAddress; // 지번 주소
   private StreetAddress streetNameAddress; // 도로명 주소
 
-  private XPosition xPosition;
-  private YPosition yPosition;
-
+  private double xPosition;
+  private double yPosition;
   public SwimmingPool() {
   }
 
@@ -25,8 +24,8 @@ public class SwimmingPool {
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
     this.state = messageForState(state);
-    this.xPosition = XPosition.from(xpos);
-    this.yPosition = YPosition.from(ypos);
+    this.xPosition = xpos;
+    this.yPosition = ypos;
   }
 
   private SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
@@ -37,8 +36,8 @@ public class SwimmingPool {
     addressValidation(lotNumberAddress, streetNameAddress);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
-    this.xPosition = XPosition.from(xPos);
-    this.yPosition = YPosition.from(yPos);
+    this.xPosition = xPos;
+    this.yPosition = yPos;
   }
 
   public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
@@ -130,10 +129,10 @@ public class SwimmingPool {
   }
 
   public double getxPosition() {
-    return xPosition.getxPos();
+    return xPosition;
   }
 
   public double getyPosition() {
-    return yPosition.getyPos();
+    return yPosition;
   }
 }
