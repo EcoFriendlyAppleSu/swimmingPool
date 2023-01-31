@@ -4,6 +4,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
+import swimming.pool.infra.common.exception.ErrorCode;
+import swimming.pool.infra.common.exception.SwimmingPoolException;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 
 @Repository
@@ -27,6 +29,9 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool findByName(String poolName) {
     var dto = swimmingPoolMapper.findByName(poolName);
+    if (dto == null) {
+      throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
+    }
     return dto.toEntity();
   }
 
@@ -53,6 +58,9 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool findById(Long poolId) {
     var dto = swimmingPoolMapper.findById(poolId);
+    if (dto == null) {
+      throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
+    }
     return dto.toEntity();
   }
 }

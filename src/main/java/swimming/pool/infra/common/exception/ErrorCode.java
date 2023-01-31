@@ -7,7 +7,7 @@ public enum ErrorCode {
   /*
    * SwimmingPool Exception Line
    * */
-  DOES_NOT_EXIST(HttpStatus.NOT_FOUND, "수영장이 존재하지 않습니다."),
+  DOES_NOT_EXIST(HttpStatus.NOT_FOUND, "찾고자 하는 수영장이 존재하지 않습니다."),
   DUPLICATE_POOL_NAME(HttpStatus.FORBIDDEN, "이미 존재하는 수영장입니다."),
   ;
 
