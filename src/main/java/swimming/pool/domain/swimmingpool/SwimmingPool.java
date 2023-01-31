@@ -29,12 +29,7 @@ public class SwimmingPool {
     this.yPosition = YPosition.from(ypos);
   }
 
-  public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
-      String streetNameAddress, double xpos, double ypos) {
-    return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress, xpos, ypos);
-  }
-
-  public SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
+  private SwimmingPool(Long poolId, String poolName, String state, String lotNumberAddress,
       String streetNameAddress, double xPos, double yPos) {
     this.poolId = poolId;
     this.poolName = PoolName.from(poolName);
@@ -44,6 +39,17 @@ public class SwimmingPool {
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
     this.xPosition = XPosition.from(xPos);
     this.yPosition = YPosition.from(yPos);
+  }
+
+  public static SwimmingPool register(String poolName, String state, String lotNumberAddress,
+      String streetNameAddress, double xpos, double ypos) {
+    return new SwimmingPool(poolName, state, lotNumberAddress, streetNameAddress, xpos, ypos);
+  }
+
+  public static SwimmingPool getInstance(Long poolId, String poolName, String state, String lotNumberAddress,
+      String streetNameAddress, double xPos, double yPos) {
+    return new SwimmingPool(poolId, poolName, state, lotNumberAddress, streetNameAddress, xPos,
+        yPos);
   }
 
   private void addressValidation(String lotNumberAddress, String streetNameAddress) {

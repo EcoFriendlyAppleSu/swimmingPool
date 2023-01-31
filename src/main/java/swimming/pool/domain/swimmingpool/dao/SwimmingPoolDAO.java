@@ -56,7 +56,7 @@ public class SwimmingPoolDAO {
   }
 
   public SwimmingPool toEntity() {
-    return new SwimmingPool(
+    return SwimmingPool.getInstance(
         this.poolId,
         this.poolName,
         this.poolState,
