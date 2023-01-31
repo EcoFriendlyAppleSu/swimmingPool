@@ -43,13 +43,13 @@
   </insert>
 
   <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.domain.swimmingpool.dto.SwimmingPoolFindDto">
-    SELECT poolId, poolState, poolName, lotAddress, streetAddress, location
+    SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolName = #{poolName}
   </select>
 
   <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.domain.swimmingpool.dto.SwimmingPoolFindDto">
-    SELECT poolId, poolState, poolName, lotAddress, streetAddress, location
+    SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolId = #{poolId}
   </select>

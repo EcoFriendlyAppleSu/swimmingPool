@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
-import swimming.pool.infra.coordinate.LocationTranslator;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 
 @Repository
@@ -28,8 +27,7 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool findByName(String poolName) {
     var dto = swimmingPoolMapper.findByName(poolName);
-    var location = LocationTranslator.doTranslate(dto.getLocation());
-    return dto.toEntity(location.getXpos(), location.getYpos());
+    return dto.toEntity();
   }
 
   @Override
@@ -55,7 +53,6 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool findById(Long poolId) {
     var dto = swimmingPoolMapper.findById(poolId);
-    var location = LocationTranslator.doTranslate(dto.getLocation());
-    return dto.toEntity(location.getXpos(), location.getYpos());
+    return dto.toEntity();
   }
 }
