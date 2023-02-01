@@ -5,36 +5,6 @@
 
 <mapper namespace="swimming.pool.infra.mybatis.SwimmingPoolMapper">
 
-  <resultMap id="swimmingPoolBase" type="swimming.pool.domain.swimmingpool.SwimmingPool">
-    <result column="poolId" property="poolId"/>
-    <result column="poolState" property="state"/>
-    <association property="poolName" resultMap="poolNameResultMap"/>
-    <association property="lotNumberAddress" resultMap="lotNumberAddressResultMap"/>
-    <association property="streetNameAddress" resultMap="streetNameAddressResultMap"/>
-    <association property="xPosition" resultMap="xPositionResultMap"/>
-    <association property="yPosition" resultMap="yPositionResultMap"/>
-  </resultMap>
-
-  <resultMap id="poolNameResultMap" type="swimming.pool.domain.swimmingpool.PoolName">
-    <result column="poolName" property="poolName"/>
-  </resultMap>
-
-  <resultMap id="lotNumberAddressResultMap" type="swimming.pool.domain.swimmingpool.LotAddress">
-    <result column="lotAddress" property="address"/>
-  </resultMap>
-
-  <resultMap id="streetNameAddressResultMap" type="swimming.pool.domain.swimmingpool.StreetAddress">
-    <result column="streetAddress" property="address"/>
-  </resultMap>
-
-  <!--<resultMap id="xPositionResultMap" type="swimming.pool.domain.swimmingpool.XPosition">
-    <result column="x" property="xPos"/>
-  </resultMap>
-
-  <resultMap id="yPositionResultMap" type="swimming.pool.domain.swimmingpool.YPosition">
-    <result column="y" property="yPos"/>
-  </resultMap>-->
-
   <insert id="insert" parameterType="swimming.pool.infra.mybatis.mappermodel.SwimmingPoolRegisterModel"
     useGeneratedKeys="true" keyProperty="poolId">
     INSERT
