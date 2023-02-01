@@ -23,7 +23,7 @@ public class SwimmingPool {
     this.poolName = PoolName.from(poolName);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
-    this.state = messageForState(state);
+    this.state = isNameOrMessage(state);
     this.xPosition = xpos;
     this.yPosition = ypos;
   }
@@ -32,7 +32,7 @@ public class SwimmingPool {
       String streetNameAddress, double xPos, double yPos) {
     this.poolId = poolId;
     this.poolName = PoolName.from(poolName);
-    this.state = nameForState(state);
+    this.state = isNameOrMessage(state);
     addressValidation(lotNumberAddress, streetNameAddress);
     this.lotNumberAddress = LotAddress.from(lotNumberAddress);
     this.streetNameAddress = StreetAddress.from(streetNameAddress);
@@ -57,17 +57,13 @@ public class SwimmingPool {
     }
   }
 
-  private PoolState messageForState(String state) {
+  private PoolState isNameOrMessage(String state) {
     if (PoolState.OPEN.getMessage().equals(state)) {
       return PoolState.OPEN;
     }
     if (PoolState.CLOSE.getMessage().equals(state)) {
       return PoolState.CLOSE;
     }
-    return PoolState.ETC;
-  }
-
-  private PoolState nameForState(String state) {
     if (PoolState.OPEN.name().equals(state)) {
       return PoolState.OPEN;
     }
@@ -75,19 +71,6 @@ public class SwimmingPool {
       return PoolState.CLOSE;
     }
     return PoolState.ETC;
-  }
-
-
-
-  public boolean canChangePoolName(String poolName) {
-    if (!this.poolName.canPoolName(poolName)) {
-      return false;
-    }
-    return true;
-  }
-
-  public void changePoolName(String poolName) {
-    this.poolName.changeName(poolName);
   }
 
   /*

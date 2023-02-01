@@ -62,4 +62,17 @@ public class SwimmingPoolFindDto {
         Double.valueOf(yPos)
     );
   }
+
+  @Override
+  public String toString() {
+    return "SwimmingPoolFindDto{" +
+        "poolId=" + poolId +
+        ", poolName='" + poolName + '\'' +
+        ", poolState='" + poolState + '\'' +
+        ", lotAddress='" + lotAddress + '\'' +
+        ", streetAddress='" + streetAddress + '\'' +
+        ", xPos='" + xPos + '\'' +
+        ", yPos='" + yPos + '\'' +
+        '}';
+  }
 }

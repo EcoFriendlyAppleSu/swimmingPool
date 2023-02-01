@@ -1,5 +1,6 @@
 package swimming.pool.infra.common.enums;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -14,19 +15,21 @@ class PoolStateTest {
     List<String> enumStringValue = List.of("영업중", "폐업", "휴업/직권말소/등록취소");
     PoolState[] poolStates = PoolState.values();
     for (PoolState poolState : poolStates) {
-      Assertions.assertThat(enumStringValue).contains(poolState.name());
+      assertThat(enumStringValue).contains(poolState.getMessage());
     }
 
     // 저장 시 getMessage가 들어가고 name은 들어가지 않는다.
   }
 
   @Test
-  public void poolStateTest() throws Exception {
-    // given
+  public void poolStateGetMessageTest() throws Exception {
+    String message = PoolState.OPEN.getMessage();
+    assertThat(message).isEqualTo("영업중");
+  }
 
-    // when
-
-    // then
-    System.out.println(PoolState.OPEN.getMessage());
+  @Test
+  public void poolStateGetNameTest() throws Exception {
+    String name = PoolState.OPEN.name();
+    assertThat(name).isEqualTo("OPEN");
   }
 }

@@ -47,15 +47,15 @@ public class UpdateSwimmingPoolCommand {
   }
 
   // TODO: 2023/01/19 변경된 주소에 맞게 좌표 값이 변경되는 로직을 만들어야 합니다.
-  public SwimmingPool toEntity() {
+  public SwimmingPool toEntity(double xPos, double yPos) {
     return SwimmingPool.getInstance(
         this.poolId,
         this.poolName,
         this.state,
         this.LotNumberAddress,
         this.StreetNameAddress,
-        1.0,
-        2.0
+        xPos,
+        yPos
     );
   }
 

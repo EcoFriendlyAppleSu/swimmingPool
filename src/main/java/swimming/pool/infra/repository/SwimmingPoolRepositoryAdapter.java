@@ -1,6 +1,8 @@
 package swimming.pool.infra.repository;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
@@ -12,6 +14,7 @@ import swimming.pool.infra.mybatis.SwimmingPoolMapper;
 public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   private final SwimmingPoolMapper swimmingPoolMapper;
+  Logger logger = LoggerFactory.getLogger(this.getClass());
 
   public SwimmingPoolRepositoryAdapter(SwimmingPoolMapper swimmingPoolMapper) {
     this.swimmingPoolMapper = swimmingPoolMapper;
