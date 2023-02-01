@@ -5,7 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import swimming.pool.application.swimmingpool.command.UpdateSwimmingPoolCommand;
 import swimming.pool.application.swimmingpool.result.SwimmingPoolUpdateResult;
 import swimming.pool.domain.swimmingpool.AddressToPosition;
+import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
+import swimming.pool.domain.swimmingpool.vo.PositionVO;
 import swimming.pool.infra.common.exception.ErrorCode;
 import swimming.pool.infra.common.exception.SwimmingPoolException;
 
@@ -28,7 +30,15 @@ public class UpdateSwimmingPoolService {
     }
     updateCommand.initPoolId(poolId);
 
-    repository.update(updateCommand.toEntity());
+    SwimmingPool foundedPool = repository.findById(poolId);
+    PositionVO positionVO = null;
+    if (!foundedPool.getLotNumberAddress().equals(updateCommand.getLotNumberAddress())
+        && updateCommand.getLotNumberAddress() != null) {
+      positionVO = addressToPosition.toPosition(updateCommand.getLotNumberAddress(),
+          updateCommand.getStreetNameAddress());
+    }
+
+    repository.update(updateCommand.toEntity(positionVO.getXpos(), positionVO.getYpos()));
     return new SwimmingPoolUpdateResult(updateCommand.getPoolId());
   }
 }

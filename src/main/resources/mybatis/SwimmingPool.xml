@@ -5,56 +5,26 @@
 
 <mapper namespace="swimming.pool.infra.mybatis.SwimmingPoolMapper">
 
-  <resultMap id="swimmingPoolBase" type="swimming.pool.domain.swimmingpool.SwimmingPool">
-    <result column="poolId" property="poolId"/>
-    <result column="poolState" property="state"/>
-    <association property="poolName" resultMap="poolNameResultMap"/>
-    <association property="lotNumberAddress" resultMap="lotNumberAddressResultMap"/>
-    <association property="streetNameAddress" resultMap="streetNameAddressResultMap"/>
-    <!--<association property="xPosition" resultMap="xPositionResultMap"/>
-    <association property="yPosition" resultMap="yPositionResultMap"/>-->
-  </resultMap>
-
-  <resultMap id="poolNameResultMap" type="swimming.pool.domain.swimmingpool.PoolName">
-    <result column="poolName" property="poolName"/>
-  </resultMap>
-
-  <resultMap id="lotNumberAddressResultMap" type="swimming.pool.domain.swimmingpool.LotAddress">
-    <result column="lotAddress" property="address"/>
-  </resultMap>
-
-  <resultMap id="streetNameAddressResultMap" type="swimming.pool.domain.swimmingpool.StreetAddress">
-    <result column="streetAddress" property="address"/>
-  </resultMap>
-
-  <!--<resultMap id="xPositionResultMap" type="swimming.pool.domain.swimmingpool.XPosition">
-    <result column="x" property="xPos"/>
-  </resultMap>
-
-  <resultMap id="yPositionResultMap" type="swimming.pool.domain.swimmingpool.YPosition">
-    <result column="y" property="yPos"/>
-  </resultMap>-->
-
-  <insert id="insert" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool"
+  <insert id="insert" parameterType="swimming.pool.infra.mybatis.mappermodel.SwimmingPoolRegisterModel"
     useGeneratedKeys="true" keyProperty="poolId">
     INSERT
     INTO swimming_pool(poolName, poolState, lotAddress, streetAddress, location)
     VALUES (#{poolName}, #{state}, #{lotNumberAddress}, #{streetNameAddress}, POINT(#{xPosition},#{yPosition}))
   </insert>
 
-  <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.domain.swimmingpool.dto.SwimmingPoolFindDto">
-    SELECT poolId, poolState, poolName, lotAddress, streetAddress, location
+  <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.application.swimmingpool.dto.SwimmingPoolFindDto">
+    SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolName = #{poolName}
   </select>
 
-  <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.domain.swimmingpool.dto.SwimmingPoolFindDto">
-    SELECT poolId, poolState, poolName, lotAddress, streetAddress, location
+  <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.application.swimmingpool.dto.SwimmingPoolFindDto">
+    SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolId = #{poolId}
   </select>
 
-  <update id="update" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool">
+  <update id="update" parameterType="swimming.pool.infra.mybatis.mappermodel.SwimmingPoolUpdateModel">
     UPDATE swimming_pool
     SET poolState     = #{state},
         poolName      = #{poolName},

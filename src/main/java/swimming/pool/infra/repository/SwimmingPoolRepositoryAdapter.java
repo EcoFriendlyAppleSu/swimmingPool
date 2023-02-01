@@ -1,16 +1,22 @@
 package swimming.pool.infra.repository;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
-import swimming.pool.infra.coordinate.LocationTranslator;
+import swimming.pool.infra.common.exception.ErrorCode;
+import swimming.pool.infra.common.exception.SwimmingPoolException;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
+import swimming.pool.infra.mybatis.mappermodel.SwimmingPoolRegisterModel;
+import swimming.pool.infra.mybatis.mappermodel.SwimmingPoolUpdateModel;
 
 @Repository
 public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
 
   private final SwimmingPoolMapper swimmingPoolMapper;
+  Logger logger = LoggerFactory.getLogger(this.getClass());
 
   public SwimmingPoolRepositoryAdapter(SwimmingPoolMapper swimmingPoolMapper) {
     this.swimmingPoolMapper = swimmingPoolMapper;
@@ -19,7 +25,15 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool save(SwimmingPool swimmingPool) {
     if (swimmingPool.getPoolId() == null || swimmingPool.getPoolId() <= 0L) {
-      swimmingPoolMapper.insert(swimmingPool);
+      var model = new SwimmingPoolRegisterModel(
+          swimmingPool.getPoolName(),
+          swimmingPool.getState().name(),
+          swimmingPool.getLotNumberAddress(),
+          swimmingPool.getStreetNameAddress(),
+          swimmingPool.getxPosition(),
+          swimmingPool.getyPosition()
+      );
+      swimmingPoolMapper.insert(model);
       return swimmingPool;
     }
     return null;
@@ -28,13 +42,24 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool findByName(String poolName) {
     var dto = swimmingPoolMapper.findByName(poolName);
-    var location = LocationTranslator.doTranslate(dto.getLocation());
-    return dto.toEntity(location.getXpos(), location.getYpos());
+    if (dto == null) {
+      throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
+    }
+    return dto.toEntity();
   }
 
   @Override
   public void update(SwimmingPool swimmingPool) {
-    swimmingPoolMapper.update(swimmingPool);
+    var model = new SwimmingPoolUpdateModel(
+        swimmingPool.getPoolId(),
+        swimmingPool.getPoolName(),
+        swimmingPool.getState().name(),
+        swimmingPool.getLotNumberAddress(),
+        swimmingPool.getStreetNameAddress(),
+        swimmingPool.getxPosition(),
+        swimmingPool.getyPosition()
+    );
+    swimmingPoolMapper.update(model);
   }
 
   @Override
@@ -55,7 +80,9 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool findById(Long poolId) {
     var dto = swimmingPoolMapper.findById(poolId);
-    var location = LocationTranslator.doTranslate(dto.getLocation());
-    return dto.toEntity(location.getXpos(), location.getYpos());
+    if (dto == null) {
+      throw new SwimmingPoolException(ErrorCode.DOES_NOT_EXIST);
+    }
+    return dto.toEntity();
   }
 }

@@ -1,4 +1,4 @@
-package swimming.pool.domain.swimmingpool.dto;
+package swimming.pool.application.swimmingpool.dto;
 
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 
@@ -9,16 +9,18 @@ public class SwimmingPoolFindDto {
   private String poolState;
   private String lotAddress;
   private String streetAddress;
-  private String location;
+  private String xPos;
+  private String yPos;
 
   public SwimmingPoolFindDto(Long poolId, String poolName, String poolState, String lotAddress,
-      String streetAddress, String location) {
+      String streetAddress, String xPos, String yPos) {
     this.poolId = poolId;
     this.poolName = poolName;
     this.poolState = poolState;
     this.lotAddress = lotAddress;
     this.streetAddress = streetAddress;
-    this.location = location;
+    this.xPos = xPos;
+    this.yPos = yPos;
   }
 
   public Long getPoolId() {
@@ -41,19 +43,36 @@ public class SwimmingPoolFindDto {
     return streetAddress;
   }
 
-  public String getLocation() {
-    return location;
+  public String getxPos() {
+    return xPos;
   }
 
-  public SwimmingPool toEntity(double xPos, double yPos) {
+  public String getyPos() {
+    return yPos;
+  }
+
+  public SwimmingPool toEntity() {
     return SwimmingPool.getInstance(
         this.poolId,
         this.poolName,
         this.poolState,
         this.lotAddress,
         this.streetAddress,
-        xPos,
-        yPos
+        Double.valueOf(xPos),
+        Double.valueOf(yPos)
     );
+  }
+
+  @Override
+  public String toString() {
+    return "SwimmingPoolFindDto{" +
+        "poolId=" + poolId +
+        ", poolName='" + poolName + '\'' +
+        ", poolState='" + poolState + '\'' +
+        ", lotAddress='" + lotAddress + '\'' +
+        ", streetAddress='" + streetAddress + '\'' +
+        ", xPos='" + xPos + '\'' +
+        ", yPos='" + yPos + '\'' +
+        '}';
   }
 }
