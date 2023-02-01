@@ -11,8 +11,8 @@
     <association property="poolName" resultMap="poolNameResultMap"/>
     <association property="lotNumberAddress" resultMap="lotNumberAddressResultMap"/>
     <association property="streetNameAddress" resultMap="streetNameAddressResultMap"/>
-    <!--<association property="xPosition" resultMap="xPositionResultMap"/>
-    <association property="yPosition" resultMap="yPositionResultMap"/>-->
+    <association property="xPosition" resultMap="xPositionResultMap"/>
+    <association property="yPosition" resultMap="yPositionResultMap"/>
   </resultMap>
 
   <resultMap id="poolNameResultMap" type="swimming.pool.domain.swimmingpool.PoolName">
@@ -35,7 +35,7 @@
     <result column="y" property="yPos"/>
   </resultMap>-->
 
-  <insert id="insert" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool"
+  <insert id="insert" parameterType="swimming.pool.infra.mybatis.mappermodel.SwimmingPoolRegisterModel"
     useGeneratedKeys="true" keyProperty="poolId">
     INSERT
     INTO swimming_pool(poolName, poolState, lotAddress, streetAddress, location)

@@ -9,6 +9,7 @@ import swimming.pool.domain.swimmingpool.SwimmingPoolRepository;
 import swimming.pool.infra.common.exception.ErrorCode;
 import swimming.pool.infra.common.exception.SwimmingPoolException;
 import swimming.pool.infra.mybatis.SwimmingPoolMapper;
+import swimming.pool.infra.mybatis.mappermodel.SwimmingPoolRegisterModel;
 
 @Repository
 public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
@@ -23,7 +24,15 @@ public class SwimmingPoolRepositoryAdapter implements SwimmingPoolRepository {
   @Override
   public SwimmingPool save(SwimmingPool swimmingPool) {
     if (swimmingPool.getPoolId() == null || swimmingPool.getPoolId() <= 0L) {
-      swimmingPoolMapper.insert(swimmingPool);
+      var model = new SwimmingPoolRegisterModel(
+          swimmingPool.getPoolName(),
+          swimmingPool.getState().name(),
+          swimmingPool.getLotNumberAddress(),
+          swimmingPool.getStreetNameAddress(),
+          swimmingPool.getxPosition(),
+          swimmingPool.getyPosition()
+      );
+      swimmingPoolMapper.insert(model);
       return swimmingPool;
     }
     return null;
