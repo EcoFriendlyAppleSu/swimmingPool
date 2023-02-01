@@ -3,7 +3,7 @@ package swimming.pool.infra.mybatis;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import swimming.pool.domain.swimmingpool.SwimmingPool;
-import swimming.pool.domain.swimmingpool.dto.SwimmingPoolFindDto;
+import swimming.pool.infra.mybatis.mapperdto.SwimmingPoolFindDto;
 
 
 @Mapper

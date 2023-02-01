@@ -42,13 +42,13 @@
     VALUES (#{poolName}, #{state}, #{lotNumberAddress}, #{streetNameAddress}, POINT(#{xPosition},#{yPosition}))
   </insert>
 
-  <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.domain.swimmingpool.dto.SwimmingPoolFindDto">
+  <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.infra.mybatis.mapperdto.SwimmingPoolFindDto">
     SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolName = #{poolName}
   </select>
 
-  <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.domain.swimmingpool.dto.SwimmingPoolFindDto">
+  <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.infra.mybatis.mapperdto.SwimmingPoolFindDto">
     SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolId = #{poolId}
