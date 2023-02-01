@@ -42,19 +42,19 @@
     VALUES (#{poolName}, #{state}, #{lotNumberAddress}, #{streetNameAddress}, POINT(#{xPosition},#{yPosition}))
   </insert>
 
-  <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.infra.mybatis.mapperdto.SwimmingPoolFindDto">
+  <select id="findByName" parameterType="java.lang.String" resultType="swimming.pool.application.swimmingpool.dto.SwimmingPoolFindDto">
     SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolName = #{poolName}
   </select>
 
-  <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.infra.mybatis.mapperdto.SwimmingPoolFindDto">
+  <select id="findById" parameterType="java.lang.Long" resultType="swimming.pool.application.swimmingpool.dto.SwimmingPoolFindDto">
     SELECT poolId, poolState, poolName, lotAddress, streetAddress, ST_X(location) AS xPosition, ST_Y(location) AS yPostion
     FROM swimming_pool
     WHERE poolId = #{poolId}
   </select>
 
-  <update id="update" parameterType="swimming.pool.domain.swimmingpool.SwimmingPool">
+  <update id="update" parameterType="swimming.pool.infra.mybatis.mappermodel.SwimmingPoolUpdateModel">
     UPDATE swimming_pool
     SET poolState     = #{state},
         poolName      = #{poolName},

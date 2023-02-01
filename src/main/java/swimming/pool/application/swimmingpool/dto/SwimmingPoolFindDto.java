@@ -1,4 +1,4 @@
-package swimming.pool.infra.mybatis.mapperdto;
+package swimming.pool.application.swimmingpool.dto;
 
 import swimming.pool.domain.swimmingpool.SwimmingPool;
 
