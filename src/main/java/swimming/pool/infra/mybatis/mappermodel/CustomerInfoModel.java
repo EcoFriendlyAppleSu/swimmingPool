@@ -1,12 +1,12 @@
 package swimming.pool.infra.mybatis.mappermodel;
 
-public class CustomerInfoDao {
+public class CustomerInfoModel {
 
   private Long customerId;
   private String name;
   private int age;
 
-  public CustomerInfoDao(String name, int age) {
+  public CustomerInfoModel(String name, int age) {
     this.name = name;
     this.age = age;
   }

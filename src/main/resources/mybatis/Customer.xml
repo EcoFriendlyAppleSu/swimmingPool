@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="swimming.pool.infra.mybatis.CustomerMapper">
-  <insert id="insert" parameterType="swimming.pool.infra.mybatis.mappermodel.CustomerInfoDao"
+  <insert id="insert" parameterType="swimming.pool.infra.mybatis.mappermodel.CustomerInfoModel"
     useGeneratedKeys="true" keyProperty="customerId">
     INSERT
     INTO customer(name, age)
